@@ -1,6 +1,7 @@
 #ifndef PRIMITIVES_H
 #define PRIMITIVES_H
 
+#include <string>
 #include <SDL2/SDL.h>
 
 class Primitives {
@@ -10,6 +11,9 @@ public:
 
     // Função para pegar a cor de um pixel na superfície
     static Uint32 getPixel(SDL_Surface* surface, int x, int y);
+
+    // Função para converter valores string em Uint32
+    static getColor(SDL_Surface* surface, std::string s);
 
     // Função para converter valores RGB em Uint32
     static Uint32 rgbToUint32(SDL_Surface* surface, int r, int g, int b);

@@ -71,7 +71,7 @@
 1756758841 c:\users\alexa\onedrive\documentos\linguagemc\sdl_poo\include\primitives.h
 	<SDL2/SDL.h>
 
-1754522583 c:\sdl2\include\sdl2\sdl.h
+1757289267 c:\sdl2\include\sdl2\sdl.h
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_assert.h"
@@ -109,12 +109,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_main.h
+1757289267 c:\sdl2\include\sdl2\sdl_main.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_stdinc.h
+1757289267 c:\sdl2\include\sdl2\sdl_stdinc.h
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -146,7 +146,7 @@
 	<stdio.h>
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_config.h
+1757289267 c:\sdl2\include\sdl2\sdl_config.h
 	"SDL_platform.h"
 	"SDL_config_windows.h"
 	"SDL_config_winrt.h"
@@ -160,7 +160,7 @@
 	"SDL_config_ngage.h"
 	"SDL_config_minimal.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_platform.h
+1757289267 c:\sdl2\include\sdl2\sdl_platform.h
 	<AvailabilityMacros.h>
 	<TargetConditionals.h>
 	<TargetConditionals.h>
@@ -168,55 +168,55 @@
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\begin_code.h
+1757289267 c:\sdl2\include\sdl2\begin_code.h
 
-1754522583 c:\sdl2\include\sdl2\close_code.h
+1757289267 c:\sdl2\include\sdl2\close_code.h
 
-1754522583 c:\sdl2\include\sdl2\sdl_config_windows.h
+1757289267 c:\sdl2\include\sdl2\sdl_config_windows.h
 	"SDL_platform.h"
 	<winsdkver.h>
 	<sdkddkver.h>
 
-1754522583 c:\sdl2\include\sdl2\sdl_config_winrt.h
+1757289267 c:\sdl2\include\sdl2\sdl_config_winrt.h
 	"SDL_platform.h"
 	<sdkddkver.h>
 
-1754522583 c:\sdl2\include\sdl2\sdl_config_wingdk.h
+1757289267 c:\sdl2\include\sdl2\sdl_config_wingdk.h
 	"SDL_platform.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_config_xbox.h
+1757289267 c:\sdl2\include\sdl2\sdl_config_xbox.h
 	"SDL_platform.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_config_macosx.h
+1757289267 c:\sdl2\include\sdl2\sdl_config_macosx.h
 	"SDL_platform.h"
 	<AvailabilityMacros.h>
 
-1754522583 c:\sdl2\include\sdl2\sdl_config_iphoneos.h
+1757289267 c:\sdl2\include\sdl2\sdl_config_iphoneos.h
 	"SDL_platform.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_config_android.h
+1757289267 c:\sdl2\include\sdl2\sdl_config_android.h
 	"SDL_platform.h"
 	<stdarg.h>
 
-1754522583 c:\sdl2\include\sdl2\sdl_config_os2.h
+1757289267 c:\sdl2\include\sdl2\sdl_config_os2.h
 	"SDL_platform.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_config_emscripten.h
+1757289267 c:\sdl2\include\sdl2\sdl_config_emscripten.h
 	"SDL_platform.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_config_ngage.h
+1757289267 c:\sdl2\include\sdl2\sdl_config_ngage.h
 	"SDL_platform.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_config_minimal.h
+1757289267 c:\sdl2\include\sdl2\sdl_config_minimal.h
 	"SDL_platform.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_assert.h
+1757289267 c:\sdl2\include\sdl2\sdl_assert.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	<signal.h>
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_atomic.h
+1757289267 c:\sdl2\include\sdl2\sdl_atomic.h
 	"SDL_stdinc.h"
 	"SDL_platform.h"
 	"begin_code.h"
@@ -224,7 +224,7 @@
 	<mbarrier.h>
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_audio.h
+1757289267 c:\sdl2\include\sdl2\sdl_audio.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_endian.h"
@@ -234,12 +234,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_error.h
+1757289267 c:\sdl2\include\sdl2\sdl_error.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_endian.h
+1757289267 c:\sdl2\include\sdl2\sdl_endian.h
 	"SDL_stdinc.h"
 	<intrin.h>
 	<endian.h>
@@ -249,13 +249,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_mutex.h
+1757289267 c:\sdl2\include\sdl2\sdl_mutex.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_thread.h
+1757289267 c:\sdl2\include\sdl2\sdl_thread.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_atomic.h"
@@ -266,18 +266,18 @@
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_rwops.h
+1757289267 c:\sdl2\include\sdl2\sdl_rwops.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_clipboard.h
+1757289267 c:\sdl2\include\sdl2\sdl_clipboard.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_cpuinfo.h
+1757289267 c:\sdl2\include\sdl2\sdl_cpuinfo.h
 	"SDL_stdinc.h"
 	<intrin.h>
 	<intrin.h>
@@ -299,7 +299,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_events.h
+1757289267 c:\sdl2\include\sdl2\sdl_events.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -313,7 +313,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_video.h
+1757289267 c:\sdl2\include\sdl2\sdl_video.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -321,13 +321,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_pixels.h
+1757289267 c:\sdl2\include\sdl2\sdl_pixels.h
 	"SDL_stdinc.h"
 	"SDL_endian.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_rect.h
+1757289267 c:\sdl2\include\sdl2\sdl_rect.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_pixels.h"
@@ -335,7 +335,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_surface.h
+1757289267 c:\sdl2\include\sdl2\sdl_surface.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -344,11 +344,11 @@
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_blendmode.h
+1757289267 c:\sdl2\include\sdl2\sdl_blendmode.h
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_keyboard.h
+1757289267 c:\sdl2\include\sdl2\sdl_keyboard.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_keycode.h"
@@ -356,21 +356,21 @@
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_keycode.h
+1757289267 c:\sdl2\include\sdl2\sdl_keycode.h
 	"SDL_stdinc.h"
 	"SDL_scancode.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_scancode.h
+1757289267 c:\sdl2\include\sdl2\sdl_scancode.h
 	"SDL_stdinc.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_mouse.h
+1757289267 c:\sdl2\include\sdl2\sdl_mouse.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_joystick.h
+1757289267 c:\sdl2\include\sdl2\sdl_joystick.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_guid.h"
@@ -378,13 +378,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_guid.h
+1757289267 c:\sdl2\include\sdl2\sdl_guid.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_gamecontroller.h
+1757289267 c:\sdl2\include\sdl2\sdl_gamecontroller.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_rwops.h"
@@ -393,17 +393,17 @@
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_sensor.h
+1757289267 c:\sdl2\include\sdl2\sdl_sensor.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_quit.h
+1757289267 c:\sdl2\include\sdl2\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_gesture.h
+1757289267 c:\sdl2\include\sdl2\sdl_gesture.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -411,70 +411,70 @@
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_touch.h
+1757289267 c:\sdl2\include\sdl2\sdl_touch.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_filesystem.h
+1757289267 c:\sdl2\include\sdl2\sdl_filesystem.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_haptic.h
+1757289267 c:\sdl2\include\sdl2\sdl_haptic.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_hidapi.h
+1757289267 c:\sdl2\include\sdl2\sdl_hidapi.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_hints.h
+1757289267 c:\sdl2\include\sdl2\sdl_hints.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_loadso.h
+1757289267 c:\sdl2\include\sdl2\sdl_loadso.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_log.h
+1757289267 c:\sdl2\include\sdl2\sdl_log.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_messagebox.h
+1757289267 c:\sdl2\include\sdl2\sdl_messagebox.h
 	"SDL_stdinc.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_metal.h
+1757289267 c:\sdl2\include\sdl2\sdl_metal.h
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_power.h
+1757289267 c:\sdl2\include\sdl2\sdl_power.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_render.h
+1757289267 c:\sdl2\include\sdl2\sdl_render.h
 	"SDL_stdinc.h"
 	"SDL_rect.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_shape.h
+1757289267 c:\sdl2\include\sdl2\sdl_shape.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -483,7 +483,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_system.h
+1757289267 c:\sdl2\include\sdl2\sdl_system.h
 	"SDL_stdinc.h"
 	"SDL_keyboard.h"
 	"SDL_render.h"
@@ -491,24 +491,24 @@
 	"begin_code.h"
 	"close_code.h"
 
-1754522583 c:\sdl2\include\sdl2\sdl_timer.h
+1757289267 c:\sdl2\include\sdl2\sdl_timer.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_version.h
+1757289267 c:\sdl2\include\sdl2\sdl_version.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_locale.h
+1757289267 c:\sdl2\include\sdl2\sdl_locale.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1754522582 c:\sdl2\include\sdl2\sdl_misc.h
+1757289267 c:\sdl2\include\sdl2\sdl_misc.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -552,4 +552,90 @@
 
 1756758742 source:c:\users\alexa\onedrive\documentos\linguagemc\sdl_poo\main.cpp
 	"App.h"
+
+1757289341 source:d:\prog\sdl2\tde-sdl2-poo\src\app.cpp
+	"App.h"
+	"Rectangle.h"
+	"Circle.h"
+	"CircleFilled.h"
+	"CircleFilledAA.h"
+
+1757289341 d:\prog\sdl2\tde-sdl2-poo\include\app.h
+	<SDL2/SDL.h>
+	<string>
+	<iostream>
+
+1757289341 d:\prog\sdl2\tde-sdl2-poo\include\rectangle.h
+	<SDL2/SDL.h>
+	"Shape.h"
+	"Primitives.h"
+
+1757289341 d:\prog\sdl2\tde-sdl2-poo\include\shape.h
+	<SDL2/SDL.h>
+
+1757296538 d:\prog\sdl2\tde-sdl2-poo\include\primitives.h
+	<string>
+	<SDL2/SDL.h>
+
+1757289341 d:\prog\sdl2\tde-sdl2-poo\include\circle.h
+	<SDL2/SDL.h>
+	"Shape.h"
+	"Primitives.h"
+
+1757289341 d:\prog\sdl2\tde-sdl2-poo\include\circlefilled.h
+	<SDL2/SDL.h>
+	<cmath>
+	"Shape.h"
+	"Primitives.h"
+
+1757289341 d:\prog\sdl2\tde-sdl2-poo\include\circlefilledaa.h
+	<SDL2/SDL.h>
+	<cmath>
+	"Shape.h"
+	"Primitives.h"
+
+1757294240 source:d:\prog\sdl2\tde-sdl2-poo\src\primitives.cpp
+	"Primitives.h"
+	<cmath>
+	<stack>
+
+1757297798 source:d:\prog\sdl2\tde-sdl2-poo\main.cpp
+	"World.h"
+	"Casa.h"
+	"Arvore.h"
+	"Cerca.h"
+	"Sol.h"
+	"App.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<vector>
+
+1757296928 d:\prog\sdl2\tde-sdl2-poo\include\world.h
+	<string>
+
+1757296858 d:\prog\sdl2\tde-sdl2-poo\include\casa.h
+	<SDL2/SDL.h>
+	"Shape.h"
+	"Primitives.h"
+	<string>
+
+1757296815 d:\prog\sdl2\tde-sdl2-poo\include\arvore.h
+	<SDL2/SDL.h>
+	"Shape.h"
+	"Primitives.h"
+	<string>
+
+1757297363 d:\prog\sdl2\tde-sdl2-poo\include\cerca.h
+	<SDL2/SDL.h>
+	"Shape.h"
+	"Primitives.h"
+	<string>
+
+1757297370 d:\prog\sdl2\tde-sdl2-poo\include\sol.h
+	<SDL2/SDL.h>
+	"Shape.h"
+	"Primitives.h"
+	<string>
 

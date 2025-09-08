@@ -2,6 +2,25 @@
 #include <cmath>
 #include <stack>
 
+Uint32 getColor(SDL_Surface* surface, std::string s) {
+    if (s == "White") return Primitives::rgbToUint32(surface, 255, 255, 255);
+    if (s == "Silver") return Primitives::rgbToUint32(surface, 192, 192, 192);
+    if (s == "Gray") return Primitives::rgbToUint32(surface, 128, 128, 128);
+    if (s == "Black") return Primitives::rgbToUint32(surface, 0, 0, 0);
+    if (s == "Red") return Primitives::rgbToUint32(surface, 255, 0, 0);
+    if (s == "Maroon") return Primitives::rgbToUint32(surface, 128, 0, 0);
+    if (s == "Yellow") return Primitives::rgbToUint32(surface, 255, 255, 0);
+    if (s == "Olive") return Primitives::rgbToUint32(surface, 128, 128, 0);
+    if (s == "Lime") return Primitives::rgbToUint32(surface, 0, 255, 0);
+    if (s == "Green") return Primitives::rgbToUint32(surface, 0, 128, 0);
+    if (s == "Aqua") return Primitives::rgbToUint32(surface, 0, 255, 255);
+    if (s == "Teal") return Primitives::rgbToUint32(surface, 0, 128, 128);
+    if (s == "Blue") return Primitives::rgbToUint32(surface, 0, 0, 255);
+    if (s == "Navy") return Primitives::rgbToUint32(surface, 0, 0, 128);
+    if (s == "Fuchsia") return Primitives::rgbToUint32(surface, 255, 0, 255);
+    if (s == "Purple") return Primitives::rgbToUint32(surface, 128, 0, 128);
+}
+
 void Primitives::setPixel(SDL_Surface* surface, int x, int y, Uint32 color) {
     if (!surface) return;
     if (x < 0 || y < 0 || x >= surface->w || y >= surface->h) return;
