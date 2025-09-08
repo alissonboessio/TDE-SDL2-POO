@@ -175,6 +175,7 @@ Sol* readSolInfo(std::ifstream& file) {
 }
 
 
+//EAE MEU TRANQUILIDADE?
 int main() {
 
     std::ifstream file("Exemplo.csv");
