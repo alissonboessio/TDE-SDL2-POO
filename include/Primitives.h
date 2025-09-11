@@ -6,6 +6,8 @@
 
 class Primitives {
 public:
+    typedef struct {int x, y;} Point;
+
     // Pixel "base" — usado por todos os outros algoritmos
     static void setPixel(SDL_Surface* surface, int x, int y, Uint32 color);
 
@@ -13,7 +15,7 @@ public:
     static Uint32 getPixel(SDL_Surface* surface, int x, int y);
 
     // Função para converter valores string em Uint32
-    static getColor(SDL_Surface* surface, std::string s);
+    static Uint32 getColor(SDL_Surface* surface, std::string s);
 
     // Função para converter valores RGB em Uint32
     static Uint32 rgbToUint32(SDL_Surface* surface, int r, int g, int b);
@@ -36,6 +38,10 @@ public:
 
     // Converte uma cor RGBA para padrão SDL
     static SDL_Color uint32ToSDL_COLOR(SDL_Surface* surface, Uint32 color);
+
+    static void drawPolygon(SDL_Surface* surface, Point pontos[], int qtdPontos, Uint32 cor);
+
+    static void translatePolygon(Point poly[], int numPoints, double tx, double ty);
 
 };
 

@@ -18,17 +18,17 @@ public:
         if (!surface) return;
 
         // Desenhar retângulo preenchido usando Primitives
-        for (int y = y1; y < y2; y++) {
+        /*for (int y = y1; y < y2; y++) {
             for (int x = x1; x < x2; x++) {
                 Primitives::setPixel(surface, x, y, color);
             }
-        }
+        }*/
 
         // Alternativamente, poderia usar apenas as arestas:
-        // Primitives::drawLine(surface, x1, y1, x2, y1, color); // topo
-        // Primitives::drawLine(surface, x1, y2, x2, y2, color); // base
-        // Primitives::drawLine(surface, x1, y1, x1, y2, color); // esquerda
-        // Primitives::drawLine(surface, x2, y1, x2, y2, color); // direita
+         Primitives::drawLine(surface, x1, y1, x2, y1, color); // topo
+         Primitives::drawLine(surface, x1, y2, x2, y2, color); // base
+         Primitives::drawLine(surface, x1, y1, x1, y2, color); // esquerda
+         Primitives::drawLine(surface, x2, y1, x2, y2, color); // direita
     }
 
     int getX1() {

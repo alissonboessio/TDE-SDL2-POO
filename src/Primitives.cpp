@@ -2,7 +2,9 @@
 #include <cmath>
 #include <stack>
 
-Uint32 getColor(SDL_Surface* surface, std::string s) {
+typedef struct {int x, y;} Point;
+
+Uint32 Primitives::getColor(SDL_Surface* surface, std::string s) {
     if (s == "White") return Primitives::rgbToUint32(surface, 255, 255, 255);
     if (s == "Silver") return Primitives::rgbToUint32(surface, 192, 192, 192);
     if (s == "Gray") return Primitives::rgbToUint32(surface, 128, 128, 128);
@@ -183,4 +185,20 @@ SDL_Color Primitives::uint32ToSDL_COLOR(SDL_Surface* surface, Uint32 color) {
     SDL_GetRGBA(color, surface->format,
             &sdlColor.r, &sdlColor.g, &sdlColor.b, &sdlColor.a);
     return sdlColor;
+}
+
+void Primitives::drawPolygon(SDL_Surface* surface, Point pontos[], int qtdPontos, Uint32 cor)
+{
+    for(int i = 0; i < qtdPontos -1; i++) {
+        Primitives::drawLine(surface, pontos[i].x, pontos[i].y, pontos[i+1].x, pontos[i+1].y, cor);
+    }
+    Primitives::drawLine(surface, pontos[qtdPontos-1].x, pontos[qtdPontos-1].y, pontos[0].x, pontos[0].y, cor);
+}
+
+void Primitives::translatePolygon(Point poly[], int numPoints, double tx, double ty)
+{
+    for(int i = 0; i < numPoints; i++){
+        poly[i].x = poly[i].x + tx;
+        poly[i].y = poly[i].y + ty;
+    }
 }

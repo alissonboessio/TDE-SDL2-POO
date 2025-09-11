@@ -47,7 +47,6 @@ World readMundoInfo(std::ifstream& file) {
     return world;
 }
 
-
 Casa* readCasaInfo(std::ifstream& file) {
     Casa* casa = new Casa();
     std::string line;
@@ -174,8 +173,6 @@ Sol* readSolInfo(std::ifstream& file) {
     return sol;
 }
 
-
-//EAE MEU TRANQUILIDADE?
 int main() {
 
     std::ifstream file("Exemplo.csv");
