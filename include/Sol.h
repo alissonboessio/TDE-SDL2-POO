@@ -14,7 +14,7 @@ private:
 public:
     Sol() {}
 
-    void draw(SDL_Surface* surface) override {
+    void draw(SDL_Surface* surface, World mundo) override {
         if (!surface) return;
 
         // implementar desenho

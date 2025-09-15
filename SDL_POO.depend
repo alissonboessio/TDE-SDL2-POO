@@ -639,64 +639,74 @@
 	"Primitives.h"
 	<string>
 
-1757544922 source:d:\prog\comp-grafica\2d\tde-sdl2-poo\main.cpp
+1757940601 source:d:\prog\comp-grafica\2d\tde-sdl2-poo\main.cpp
 	"World.h"
 	"Casa.h"
 	"Arvore.h"
 	"Cerca.h"
 	"Sol.h"
 	"App.h"
+	"Point.h"
 	<iostream>
 	<fstream>
 	<sstream>
 	<string>
 	<vector>
 
-1757544836 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\world.h
+1757940231 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\world.h
+	"Point.h"
 	<string>
 
-1757544836 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\casa.h
+1757945187 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\casa.h
+	<SDL2/SDL.h>
+	"Shape.h"
+	"Primitives.h"
+	"Point.h"
+	<string>
+	<vector>
+
+1757938701 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\shape.h
+	<SDL2/SDL.h>
+	"World.h"
+
+1757944571 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\primitives.h
+	<string>
+	<vector>
+	<SDL2/SDL.h>
+	"Point.h"
+
+1757934458 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\arvore.h
 	<SDL2/SDL.h>
 	"Shape.h"
 	"Primitives.h"
 	<string>
 
-1757544836 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\shape.h
-	<SDL2/SDL.h>
-
-1757550197 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\primitives.h
-	<string>
-	<SDL2/SDL.h>
-
-1757544836 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\arvore.h
+1757937198 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\cerca.h
 	<SDL2/SDL.h>
 	"Shape.h"
 	"Primitives.h"
 	<string>
 
-1757544836 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\cerca.h
+1757937231 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\sol.h
 	<SDL2/SDL.h>
 	"Shape.h"
 	"Primitives.h"
 	<string>
 
-1757544836 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\sol.h
-	<SDL2/SDL.h>
-	"Shape.h"
-	"Primitives.h"
-	<string>
-
-1757544836 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\app.h
+1757938446 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\app.h
 	<SDL2/SDL.h>
 	<string>
 	<iostream>
+	"World.h"
 
-1757550258 source:d:\prog\comp-grafica\2d\tde-sdl2-poo\src\app.cpp
+1757945038 source:d:\prog\comp-grafica\2d\tde-sdl2-poo\src\app.cpp
 	"App.h"
 	"Rectangle.h"
 	"Circle.h"
 	"CircleFilled.h"
 	"CircleFilledAA.h"
+	"Casa.h"
+	"World.h"
 
 1757547487 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\rectangle.h
 	<SDL2/SDL.h>
@@ -720,8 +730,12 @@
 	"Shape.h"
 	"Primitives.h"
 
-1757549493 source:d:\prog\comp-grafica\2d\tde-sdl2-poo\src\primitives.cpp
+1757944608 source:d:\prog\comp-grafica\2d\tde-sdl2-poo\src\primitives.cpp
 	"Primitives.h"
 	<cmath>
 	<stack>
+	<vector>
+
+1757940496 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\point.h
+	<iostream>
 

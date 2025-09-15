@@ -5,6 +5,7 @@
 #include "Cerca.h"
 #include "Sol.h"
 #include "App.h"
+#include "Point.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -59,8 +60,7 @@ Casa* readCasaInfo(std::ifstream& file) {
         std::string chave = tokens[0];
 
         if (chave == "Localizacao") {
-            casa->setX(std::stoi(tokens[1]));
-            casa->setY(std::stoi(tokens[2]));
+            casa->setPosic(Point{std::stoi(tokens[1]), std::stoi(tokens[2])});
         } else if (chave == "Altura") {
             casa->setAltura(std::stoi(tokens[1]));
         } else if (chave == "Largura") {
@@ -210,7 +210,9 @@ int main() {
 
     file.close();
 
-    App app("SDL Orientado a Objetos", 640, 480);
+    //std::cout << "srd: " << world.getSRDWidth() << " - " << world.getSRDHeight() << "sru: " << world.getSRUWidth() << " - " << world.getSRUHeight();
+
+    App app("SDL Mundo CSV", world);
     app.run();
     return 0;
 }

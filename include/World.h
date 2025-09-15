@@ -1,6 +1,8 @@
 #ifndef WORLD_H
 #define WORLD_H
 
+#include "Point.h"
+
 #include <string>
 
 class World
@@ -13,7 +15,16 @@ public:
 
     int getSRDWidth() const { return SRD_width; }
     int getSRDHeight() const { return SRD_height; }
+    int getSRUHeight() const { return SRU_height; }
+    int getSRUWidth() const { return SRU_width; }
     std::string getCorFundo() const { return corFundo; }
+
+    Point worldToScreen(Point p) const {
+        double xScreen = (p.getX() / static_cast<double>(SRU_width)) * SRD_width;
+        double yScreen = SRD_height - (p.getY() / static_cast<double>(SRU_height)) * SRD_height;
+
+        return {xScreen, yScreen};
+    }
 
 private:
     int SRD_width, SRD_height;

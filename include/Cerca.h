@@ -14,7 +14,7 @@ protected:
 public:
     Cerca() {}
 
-    void draw(SDL_Surface* surface) override {
+    void draw(SDL_Surface* surface, World mundo) override {
         if (!surface) return;
 
         // implementar desenho

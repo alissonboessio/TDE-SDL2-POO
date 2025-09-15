@@ -2,11 +2,12 @@
 #define PRIMITIVES_H
 
 #include <string>
+#include <vector>
 #include <SDL2/SDL.h>
+#include "Point.h"
 
 class Primitives {
 public:
-    typedef struct {int x, y;} Point;
 
     // Pixel "base" — usado por todos os outros algoritmos
     static void setPixel(SDL_Surface* surface, int x, int y, Uint32 color);
@@ -39,9 +40,11 @@ public:
     // Converte uma cor RGBA para padrão SDL
     static SDL_Color uint32ToSDL_COLOR(SDL_Surface* surface, Uint32 color);
 
-    static void drawPolygon(SDL_Surface* surface, Point pontos[], int qtdPontos, Uint32 cor);
+    static void drawPolygon(SDL_Surface* surface, std::vector<Point> pontos, Uint32 cor);
 
-    static void translatePolygon(Point poly[], int numPoints, double tx, double ty);
+    static void translatePolygon(std::vector<Point>& poly, double tx, double ty);
+
+    static void scalePolygon(std::vector<Point>& poly, double sx, double sy, double cx, double cy);
 
 };
 

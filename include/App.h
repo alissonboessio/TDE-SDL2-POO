@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <string>
 #include <iostream>
+#include "World.h"
 
 class App {
 private:
@@ -11,10 +12,11 @@ private:
     SDL_Surface* surface;
     bool running;
     int width, height;
+    World mundo;
     std::string title;
 
 public:
-    App(const std::string& title, int w, int h);
+    App(const std::string& title, World mundo);
     ~App();
 
     void run();
@@ -25,6 +27,7 @@ public:
     SDL_Surface* getSurface() { return surface; }
     int getWidth() const { return width; }
     int getHeight() const { return height; }
+    World getMundo() const { return mundo; }
 };
 
 #endif

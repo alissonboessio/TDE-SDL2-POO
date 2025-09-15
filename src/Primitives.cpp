@@ -1,8 +1,8 @@
 #include "Primitives.h"
 #include <cmath>
 #include <stack>
+#include <vector>
 
-typedef struct {int x, y;} Point;
 
 Uint32 Primitives::getColor(SDL_Surface* surface, std::string s) {
     if (s == "White") return Primitives::rgbToUint32(surface, 255, 255, 255);
@@ -187,18 +187,36 @@ SDL_Color Primitives::uint32ToSDL_COLOR(SDL_Surface* surface, Uint32 color) {
     return sdlColor;
 }
 
-void Primitives::drawPolygon(SDL_Surface* surface, Point pontos[], int qtdPontos, Uint32 cor)
+void Primitives::drawPolygon(SDL_Surface* surface, std::vector<Point> pontos, Uint32 cor)
 {
+    int qtdPontos = pontos.size();
     for(int i = 0; i < qtdPontos -1; i++) {
-        Primitives::drawLine(surface, pontos[i].x, pontos[i].y, pontos[i+1].x, pontos[i+1].y, cor);
+        Primitives::drawLine(surface, pontos[i].getX(), pontos[i].getY(), pontos[i+1].getX(), pontos[i+1].getY(), cor);
     }
-    Primitives::drawLine(surface, pontos[qtdPontos-1].x, pontos[qtdPontos-1].y, pontos[0].x, pontos[0].y, cor);
+    Primitives::drawLine(surface, pontos[qtdPontos-1].getX(), pontos[qtdPontos-1].getY(), pontos[0].getX(), pontos[0].getY(), cor);
 }
 
-void Primitives::translatePolygon(Point poly[], int numPoints, double tx, double ty)
+void Primitives::translatePolygon(std::vector<Point>& poly, double tx, double ty)
 {
-    for(int i = 0; i < numPoints; i++){
-        poly[i].x = poly[i].x + tx;
-        poly[i].y = poly[i].y + ty;
+    for(auto& p : poly){
+        p.setX(p.getX() + tx);
+        p.setY(p.getY() + ty);
+    }
+}
+
+void Primitives::scalePolygon(std::vector<Point>& poly, double sx, double sy, double cx, double cy)
+{
+    for (auto& p : poly) {
+        // Translada para a origem
+        double xRel = p.getX() - cx;
+        double yRel = p.getY() - cy;
+
+        // Aplica escala
+        xRel *= sx;
+        yRel *= sy;
+
+        // Translada de volta
+        p.setX(xRel + cx);
+        p.setY(yRel + cy);
     }
 }

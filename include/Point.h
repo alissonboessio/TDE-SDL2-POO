@@ -5,29 +5,29 @@
 
 class Point {
 private:
-    int x, y;
+    double x, y;
 
 public:
     // Construtor
-    Point(int newX = 0, int newY = 0) {
+    Point(double newX = 0, double newY = 0) {
         x = newX;
         y = newY;
     }
 
     // Getters
-    int getX() {
+    double getX() {
         return x;
     };
 
-    int getY() {
+    double getY() {
         return y;
     }
 
     // Setters
-    void setX(int newX){
+    void setX(double newX){
         x = newX;
     }
-    void setY(int newY) {
+    void setY(double newY) {
         y = newY;
     }
 

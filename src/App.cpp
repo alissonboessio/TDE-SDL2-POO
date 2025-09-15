@@ -3,10 +3,12 @@
 #include "Circle.h"
 #include "CircleFilled.h"
 #include "CircleFilledAA.h"
+#include "Casa.h"
+#include "World.h"
 
-App::App(const std::string& title, int w, int h)
+App::App(const std::string& title, World mundo)
     : window(nullptr), surface(nullptr), running(false),
-      width(w), height(h), title(title) {
+      width(mundo.getSRDWidth()), height(mundo.getSRDHeight()), title(title), mundo(mundo) {
 
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "Erro ao inicializar SDL: " << SDL_GetError() << std::endl;
@@ -60,7 +62,7 @@ void App::run() {
         CircleFilledAA circfa(500, 100, 70, blue);
         circfa.draw(surface);*/
 
-        Primitives::Point pontos[4];
+        /*Primitives::Point pontos[4];
 
         pontos[0].x = 10;
         pontos[0].y = 10;
@@ -78,7 +80,19 @@ void App::run() {
 
         Primitives::translatePolygon(pontos, 4, 30, 30);
 
-        Primitives::drawPolygon(surface, pontos, 4, Primitives::getColor(surface, "Blue"));
+        Primitives::drawPolygon(surface, pontos, 4, Primitives::getColor(surface, "Blue"));*/
+
+        Casa casa = Casa();
+        casa.setAltura(5);
+        casa.setLargura(3);
+
+        casa.setPosic(Point{15,15});
+
+        casa.setCorParede("Red");
+        casa.setCorPorta("Green");
+        casa.setCorTelhado("Yellow");
+
+        casa.draw(surface, getMundo());
 
 
         handleEvents();
@@ -99,6 +113,7 @@ void App::handleEvents() {
             surface = SDL_GetWindowSurface(window);
             width = surface->w;
             height = surface->h;
+            mundo.setSRD(surface->w, surface->h);
             std::cout << "Size changed: " << width << ", " << height << "\n";
         }
 
