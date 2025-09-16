@@ -23,14 +23,18 @@ std::vector<std::string> split(std::string &line, char separador = ';') {
     return tokens;
 }
 
-World readMundoInfo(std::ifstream& file) {
+World readMundoInfo(std::ifstream& file, std::string& proximoShape) {
     World world = World();
     std::string line;
 
     while (std::getline(file, line)) {
         if (line.empty()) continue;
         auto tokens = split(line, ';');
-        if (tokens.size() == 1) break;
+        if (tokens.size() == 1) {
+
+            proximoShape = tokens[0];
+            break;
+        }
 
         std::string chave = tokens[0];
 
@@ -48,14 +52,17 @@ World readMundoInfo(std::ifstream& file) {
     return world;
 }
 
-Casa* readCasaInfo(std::ifstream& file) {
+Casa* readCasaInfo(std::ifstream& file, std::string& proximoShape) {
     Casa* casa = new Casa();
     std::string line;
 
     while (std::getline(file, line)) {
         if (line.empty()) continue;
         auto tokens = split(line, ';');
-        if (tokens.size() == 1) break;
+        if (tokens.size() == 1) {
+            proximoShape = tokens[0];
+            break;
+        }
 
         std::string chave = tokens[0];
 
@@ -81,14 +88,17 @@ Casa* readCasaInfo(std::ifstream& file) {
     return casa;
 }
 
-Arvore* readArvoreInfo(std::ifstream& file) {
+Arvore* readArvoreInfo(std::ifstream& file, std::string& proximoShape) {
     Arvore* arvore = new Arvore();
     std::string line;
 
     while (std::getline(file, line)) {
         if (line.empty()) continue;
         auto tokens = split(line, ';');
-        if (tokens.size() == 1) break;
+        if (tokens.size() == 1) {
+            proximoShape = tokens[0];
+            break;
+        }
 
         std::string chave = tokens[0];
 
@@ -113,14 +123,17 @@ Arvore* readArvoreInfo(std::ifstream& file) {
     return arvore;
 }
 
-Cerca* readCercaInfo(std::ifstream& file) {
+Cerca* readCercaInfo(std::ifstream& file, std::string& proximoShape) {
     Cerca* cerca = new Cerca();
     std::string line;
 
     while (std::getline(file, line)) {
         if (line.empty()) continue;
         auto tokens = split(line, ';');
-        if (tokens.size() == 1) break;
+        if (tokens.size() == 1) {
+            proximoShape = tokens[0];
+            break;
+        }
 
         std::string chave = tokens[0];
 
@@ -143,14 +156,17 @@ Cerca* readCercaInfo(std::ifstream& file) {
     return cerca;
 }
 
-Sol* readSolInfo(std::ifstream& file) {
+Sol* readSolInfo(std::ifstream& file, std::string& proximoShape) {
     Sol* sol = new Sol();
     std::string line;
 
     while (std::getline(file, line)) {
         if (line.empty()) continue;
         auto tokens = split(line, ';');
-        if (tokens.size() == 1) break;
+        if (tokens.size() == 1) {
+            proximoShape = tokens[0];
+            break;
+        }
 
         std::string chave = tokens[0];
 
@@ -185,6 +201,7 @@ int main() {
 
     World world;
     std::vector<Shape*> shapes;
+    std::string proximoShape;
 
     while (std::getline(file, line)) {
         if (line.empty()) continue;
@@ -195,24 +212,33 @@ int main() {
 
         std::string chave = tokens[0];
 
-        if (chave == "Tela") {
-            world = readMundoInfo(file);
-        } else if (chave == "Casa") {
-            shapes.push_back(readCasaInfo(file));
-        } else if (chave == "Arvore") {
-            shapes.push_back(readArvoreInfo(file));
-        } else if (chave == "Cerca") {
-            shapes.push_back(readCercaInfo(file));
-        } else if (chave == "Sol") {
-            shapes.push_back(readSolInfo(file));
+        if (chave == "Tela" || proximoShape == "Tela") {
+            proximoShape = "";
+            world = readMundoInfo(file, proximoShape);
+        }
+        if (chave == "Casa" || proximoShape == "Casa") {
+            proximoShape = "";
+            shapes.push_back(readCasaInfo(file, proximoShape));
+        }
+        if (chave == "Arvore" || proximoShape == "Arvore") {
+            proximoShape = "";
+            shapes.push_back(readArvoreInfo(file, proximoShape));
+        }
+        if (chave == "Cerca" || proximoShape == "Cerca") {
+            proximoShape = "";
+            shapes.push_back(readCercaInfo(file, proximoShape));
+        }
+        if (chave == "Sol" || proximoShape == "Sol") {
+            proximoShape = "";
+            shapes.push_back(readSolInfo(file, proximoShape));
         }
     }
 
     file.close();
 
-    //std::cout << "srd: " << world.getSRDWidth() << " - " << world.getSRDHeight() << "sru: " << world.getSRUWidth() << " - " << world.getSRUHeight();
+    std::cout << shapes.size();
 
     App app("SDL Mundo CSV", world);
-    app.run();
+    app.run(shapes);
     return 0;
 }

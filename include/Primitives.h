@@ -44,7 +44,11 @@ public:
 
     static void translatePolygon(std::vector<Point>& poly, double tx, double ty);
 
+    static Point translatePoint(Point point, double tx, double ty);
+
     static void scalePolygon(std::vector<Point>& poly, double sx, double sy, double cx, double cy);
+
+    static Point scalePoint(Point point, double sx, double sy, double cx, double cy);
 
 };
 

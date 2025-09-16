@@ -16,7 +16,7 @@ public:
     CircleFilledAA(int xc, int yc, int radius, Uint32 color)
         : xc(xc), yc(yc), radius(radius), color(color) {}
 
-    void draw(SDL_Surface* surface) override {
+    void draw(SDL_Surface* surface, World mundo) override {
         if (!surface) return;
 
         Uint8 r, g, b;

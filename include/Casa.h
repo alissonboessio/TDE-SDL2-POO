@@ -11,8 +11,9 @@
 class Casa : public Shape {
 private:
     int altura, largura, inclinacao;
-    Point posic;
+    Point posic, posicCorParede, posicCorTelhado, posicCorPorta;
     std::string corParede, corTelhado, corPorta; // utilizar getColor do Primitives
+    std::vector<Point> pontosParede, pontosTeto, pontosPorta;
 
 public:
     Casa() {
@@ -20,14 +21,18 @@ public:
         pontosParede = {
             {0, 0}, {0, 0.5}, {1, 0.5}, {1, 0}
         };
+        posicCorParede = {0.25, 0.25};
 
         pontosTeto = {
             {0, 0.5}, {0.5, 1}, {1, 0.5}
         };
+        posicCorTelhado = {0.5, 0.8};
 
         pontosPorta = {
             {0.35, 0}, {0.35, 0.3}, {0.65, 0.3}, {0.65, 0}
         };
+        posicCorPorta = {0.4, 0.2};
+
     }
 
     void draw(SDL_Surface* surface, World mundo) override {
@@ -47,7 +52,9 @@ public:
 
         Primitives::drawPolygon(surface, paredeTela, Primitives::getColor(surface, corParede));
 
-
+        Point fillCorParede = Primitives::scalePoint(posicCorParede, largura, altura, 0,0);
+        fillCorParede = mundo.worldToScreen(Primitives::translatePoint(fillCorParede, posic.getX(), posic.getY()));
+        Primitives::floodFill(surface, fillCorParede.getX(), fillCorParede.getY(), Primitives::getColor(surface, corParede));
 
         // teto
         std::vector<Point> tetoTela;
@@ -63,6 +70,9 @@ public:
 
         Primitives::drawPolygon(surface, tetoTela, Primitives::getColor(surface, corTelhado));
 
+        Point fillCorTelhado = Primitives::scalePoint(posicCorTelhado, largura, altura, 0,0);
+        fillCorTelhado = mundo.worldToScreen(Primitives::translatePoint(fillCorTelhado, posic.getX(), posic.getY()));
+        Primitives::floodFill(surface, fillCorTelhado.getX(), fillCorTelhado.getY(), Primitives::getColor(surface, corTelhado));
 
         // porta
         std::vector<Point> portaTela;
@@ -78,11 +88,10 @@ public:
 
         Primitives::drawPolygon(surface, portaTela, Primitives::getColor(surface, corPorta));
 
+        Point fillCorPorta = Primitives::scalePoint(posicCorPorta, largura, altura, 0,0);
+        fillCorPorta = mundo.worldToScreen(Primitives::translatePoint(fillCorPorta, posic.getX(), posic.getY()));
+        Primitives::floodFill(surface, fillCorPorta.getX(), fillCorPorta.getY(), Primitives::getColor(surface, corPorta));
     }
-
-    std::vector<Point> pontosParede;
-    std::vector<Point> pontosTeto;
-    std::vector<Point> pontosPorta;
 
     // --- Getters ---
     Point getPosicao() const { return posic; }

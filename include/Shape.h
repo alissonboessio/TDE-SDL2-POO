@@ -8,11 +8,7 @@
 class Shape {
 public:
     virtual ~Shape() {}
-    virtual void draw(SDL_Surface* surface, World mundo) {
-    }
-
-    virtual void draw(SDL_Surface* surface) {
-    }
+    virtual void draw(SDL_Surface* surface, World mundo)= 0;
 };
 
 #endif

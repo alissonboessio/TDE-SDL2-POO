@@ -41,6 +41,7 @@
 		</Compiler>
 		<Unit filename="include/App.h" />
 		<Unit filename="include/Arvore.h" />
+		<Unit filename="include/Button.h" />
 		<Unit filename="include/Casa.h" />
 		<Unit filename="include/Cerca.h" />
 		<Unit filename="include/Circle.h" />

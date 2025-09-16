@@ -1,5 +1,4 @@
 #include "App.h"
-#include "Rectangle.h"
 #include "Circle.h"
 #include "CircleFilled.h"
 #include "CircleFilledAA.h"
@@ -34,7 +33,7 @@ App::~App() {
     SDL_Quit();
 }
 
-void App::run() {
+void App::run(const std::vector<Shape*>& shapes) {
     running = true;
 
     while (running) {
@@ -43,57 +42,10 @@ void App::run() {
         // Limpar fundo
         clear(255, 255, 255);
 
-        /*Uint32 red = Primitives::rgbToUint32(surface, 255, 0, 0);
-        Uint32 green = Primitives::rgbToUint32(surface, 0, 255, 0);
-        Uint32 blue = Primitives::rgbToUint32(surface, 0, 0, 255);
-        Uint32 black = Primitives::rgbToUint32(surface, 0, 0, 0);*/
+        for (auto shape : shapes) {
+            shape->draw(surface, getMundo());
 
-
-        // Criar um retângulo vermelho
-       /* Rectangle rect(50, 50, 200, 150, red);
-        rect.draw(surface);
-
-        Circle circ(300, 300, 100, black);
-        circ.draw(surface);
-
-        CircleFilled circf(300, 300, 70, green);
-        circf.draw(surface);
-
-        CircleFilledAA circfa(500, 100, 70, blue);
-        circfa.draw(surface);*/
-
-        /*Primitives::Point pontos[4];
-
-        pontos[0].x = 10;
-        pontos[0].y = 10;
-
-        pontos[1].x = 300;
-        pontos[1].y = 10;
-
-        pontos[2].x = 300;
-        pontos[2].y = 200;
-
-        pontos[3].x = 10;
-        pontos[3].y = 200;
-
-        Primitives::drawPolygon(surface, pontos, 4, Primitives::getColor(surface, "Red"));
-
-        Primitives::translatePolygon(pontos, 4, 30, 30);
-
-        Primitives::drawPolygon(surface, pontos, 4, Primitives::getColor(surface, "Blue"));*/
-
-        Casa casa = Casa();
-        casa.setAltura(5);
-        casa.setLargura(3);
-
-        casa.setPosic(Point{15,15});
-
-        casa.setCorParede("Red");
-        casa.setCorPorta("Green");
-        casa.setCorTelhado("Yellow");
-
-        casa.draw(surface, getMundo());
-
+        }
 
         handleEvents();
 

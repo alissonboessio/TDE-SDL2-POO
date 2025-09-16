@@ -3,8 +3,10 @@
 
 #include <SDL2/SDL.h>
 #include <string>
+#include <vector>
 #include <iostream>
 #include "World.h"
+#include "Shape.h"
 
 class App {
 private:
@@ -19,7 +21,7 @@ public:
     App(const std::string& title, World mundo);
     ~App();
 
-    void run();
+    void run(const std::vector<Shape*>& shapes);
     void handleEvents();
     void clear(Uint8 r, Uint8 g, Uint8 b);
     void present();

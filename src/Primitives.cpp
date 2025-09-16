@@ -21,6 +21,7 @@ Uint32 Primitives::getColor(SDL_Surface* surface, std::string s) {
     if (s == "Navy") return Primitives::rgbToUint32(surface, 0, 0, 128);
     if (s == "Fuchsia") return Primitives::rgbToUint32(surface, 255, 0, 255);
     if (s == "Purple") return Primitives::rgbToUint32(surface, 128, 0, 128);
+    return Primitives::rgbToUint32(surface, 255,0,255);
 }
 
 void Primitives::setPixel(SDL_Surface* surface, int x, int y, Uint32 color) {
@@ -204,6 +205,13 @@ void Primitives::translatePolygon(std::vector<Point>& poly, double tx, double ty
     }
 }
 
+Point Primitives::translatePoint(Point point, double tx, double ty)
+{
+    point.setX(point.getX() + tx);
+    point.setY(point.getY() + ty);
+    return point;
+}
+
 void Primitives::scalePolygon(std::vector<Point>& poly, double sx, double sy, double cx, double cy)
 {
     for (auto& p : poly) {
@@ -219,4 +227,20 @@ void Primitives::scalePolygon(std::vector<Point>& poly, double sx, double sy, do
         p.setX(xRel + cx);
         p.setY(yRel + cy);
     }
+}
+
+Point Primitives::scalePoint(Point point, double sx, double sy, double cx, double cy)
+{
+    // Translada para a origem
+    double xRel = point.getX() - cx;
+    double yRel = point.getY() - cy;
+
+    // Aplica escala
+    xRel *= sx;
+    yRel *= sy;
+
+    // Translada de volta
+    point.setX(xRel + cx);
+    point.setY(yRel + cy);
+    return point;
 }
