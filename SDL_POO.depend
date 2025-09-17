@@ -553,7 +553,7 @@
 1756758742 source:c:\users\alexa\onedrive\documentos\linguagemc\sdl_poo\main.cpp
 	"App.h"
 
-1758132607 source:d:\prog\sdl2\tde-sdl2-poo\src\app.cpp
+1758141748 source:d:\prog\sdl2\tde-sdl2-poo\src\app.cpp
 	"App.h"
 	"Circle.h"
 	"CircleFilled.h"
@@ -607,7 +607,7 @@
 	<stack>
 	<vector>
 
-1758132146 source:d:\prog\sdl2\tde-sdl2-poo\main.cpp
+1758140969 source:d:\prog\sdl2\tde-sdl2-poo\main.cpp
 	"World.h"
 	"Casa.h"
 	"Arvore.h"
@@ -645,7 +645,7 @@
 	"Primitives.h"
 	<string>
 
-1758043232 d:\prog\sdl2\tde-sdl2-poo\include\sol.h
+1758142229 d:\prog\sdl2\tde-sdl2-poo\include\sol.h
 	<SDL2/SDL.h>
 	"Shape.h"
 	"Primitives.h"

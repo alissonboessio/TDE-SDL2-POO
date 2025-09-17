@@ -171,8 +171,7 @@ Sol* readSolInfo(std::ifstream& file, std::string& proximoShape) {
         std::string chave = tokens[0];
 
         if (chave == "Localizacao") {
-            sol->setX(std::stoi(tokens[1]));
-            sol->setY(std::stoi(tokens[2]));
+            sol->setPosic(Point{std::stoi(tokens[1]), std::stoi(tokens[2])});
         } else if (chave == "Altura") {
             sol->setAltura(std::stoi(tokens[1]));
         } else if (chave == "Largura") {
