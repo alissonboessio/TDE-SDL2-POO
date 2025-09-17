@@ -22,6 +22,7 @@ public:
     static Uint32 rgbToUint32(SDL_Surface* surface, int r, int g, int b);
 
     // Retas
+    static void drawLine(SDL_Surface* surface, Point ponto0, Point ponto1, Uint32 color);
     static void drawLine(SDL_Surface* surface, int x1, int y1, int x2, int y2, Uint32 color);
     static void drawLineAA(SDL_Surface* surface, int x1, int y1, int x2, int y2, Uint32 color);
 
@@ -30,6 +31,9 @@ public:
 
     // Curvas de Bézier (exemplo: quadrática)
     static void drawBezier(SDL_Surface* surface, int x0, int y0, int x1, int y1, int x2, int y2, Uint32 color);
+
+    // Curvas de Bézier (exemplo: quadrática)
+    static void drawBezier(SDL_Surface* surface, Point ponto0, Point ponto1, Point ponto2, Uint32 color);
 
     // Flood fill (4-direções)
     static void floodFill(SDL_Surface* surface, int x, int y, Uint32 fillColor, Uint32 borderColor);
@@ -49,6 +53,8 @@ public:
     static void scalePolygon(std::vector<Point>& poly, double sx, double sy, double cx, double cy);
 
     static Point scalePoint(Point point, double sx, double sy, double cx, double cy);
+
+    static double scaleLength(double length, double sx, double sy);
 
 };
 

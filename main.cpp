@@ -85,6 +85,7 @@ Casa* readCasaInfo(std::ifstream& file, std::string& proximoShape) {
             exit(-1);
         }
     }
+
     return casa;
 }
 
@@ -103,8 +104,7 @@ Arvore* readArvoreInfo(std::ifstream& file, std::string& proximoShape) {
         std::string chave = tokens[0];
 
         if (chave == "Localizacao") {
-            arvore->setX(std::stoi(tokens[1]));
-            arvore->setY(std::stoi(tokens[2]));
+            arvore->setPosic(Point{std::stoi(tokens[1]), std::stoi(tokens[2])});
         } else if (chave == "Altura") {
             arvore->setAltura(std::stoi(tokens[1]));
         } else if (chave == "Largura") {
@@ -201,34 +201,43 @@ int main() {
 
     World world;
     std::vector<Shape*> shapes;
-    std::string proximoShape;
+    std::string proximoShape = "";
 
-    while (std::getline(file, line)) {
-        if (line.empty()) continue;
+    while (true) {
+        if (proximoShape == "") {
+            if (!std::getline(file, line)) break; // acabou arquivo
+            if (line.empty()) continue;
+        }
 
         auto tokens = split(line, ';');
-
-        if (tokens.empty()) continue;
+        if (tokens.empty()) {
+            proximoShape = "";
+            continue;
+        }
 
         std::string chave = tokens[0];
 
-        if (chave == "Tela" || proximoShape == "Tela") {
+        if (proximoShape != "") {
+            chave = proximoShape;
+        }
+
+        if (chave == "Tela") {
             proximoShape = "";
             world = readMundoInfo(file, proximoShape);
         }
-        if (chave == "Casa" || proximoShape == "Casa") {
+        if (chave == "Casa") {
             proximoShape = "";
             shapes.push_back(readCasaInfo(file, proximoShape));
         }
-        if (chave == "Arvore" || proximoShape == "Arvore") {
+        if (chave == "Arvore") {
             proximoShape = "";
             shapes.push_back(readArvoreInfo(file, proximoShape));
         }
-        if (chave == "Cerca" || proximoShape == "Cerca") {
+        if (chave == "Cerca") {
             proximoShape = "";
             shapes.push_back(readCercaInfo(file, proximoShape));
         }
-        if (chave == "Sol" || proximoShape == "Sol") {
+        if (chave == "Sol") {
             proximoShape = "";
             shapes.push_back(readSolInfo(file, proximoShape));
         }

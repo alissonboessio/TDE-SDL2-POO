@@ -40,7 +40,7 @@ void App::run(const std::vector<Shape*>& shapes) {
 
 
         // Limpar fundo
-        clear(255, 255, 255);
+        clear(Primitives::getColor(surface, getMundo().getCorFundo()));
 
         for (auto shape : shapes) {
             shape->draw(surface, getMundo());
@@ -72,8 +72,7 @@ void App::handleEvents() {
     }
 }
 
-void App::clear(Uint8 r, Uint8 g, Uint8 b) {
-    Uint32 color = SDL_MapRGB(surface->format, r, g, b);
+void App::clear(Uint32 color) {
     SDL_FillRect(surface, NULL, color);
 }
 

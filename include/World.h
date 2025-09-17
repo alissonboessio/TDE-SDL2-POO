@@ -26,6 +26,10 @@ public:
         return {xScreen, yScreen};
     }
 
+    double worldToScreen(double length) const {
+        return (length / static_cast<double>(SRU_width)) * SRD_width;
+    }
+
 private:
     int SRD_width, SRD_height;
     int SRU_width, SRU_height;

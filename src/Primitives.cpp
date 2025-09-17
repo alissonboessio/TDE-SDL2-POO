@@ -79,6 +79,25 @@ void Primitives::drawLine(SDL_Surface* surface, int x1, int y1, int x2, int y2, 
     }
 }
 
+// Algoritmo de Bresenham
+void Primitives::drawLine(SDL_Surface* surface, Point ponto0, Point ponto1, Uint32 color) {
+    int x1 = ponto0.getX();
+    int x2 = ponto1.getX();
+    int y1 = ponto0.getY();
+    int y2 = ponto1.getY();
+    int dx = abs(x2 - x1), sx = x1 < x2 ? 1 : -1;
+    int dy = -abs(y2 - y1), sy = y1 < y2 ? 1 : -1;
+    int err = dx + dy, e2;
+
+    while (true) {
+        setPixel(surface, x1, y1, color);
+        if (x1 == x2 && y1 == y2) break;
+        e2 = 2 * err;
+        if (e2 >= dy) { err += dy; x1 += sx; }
+        if (e2 <= dx) { err += dx; y1 += sy; }
+    }
+}
+
 // Anti-aliased line (Wu's algorithm simplificado)
 void Primitives::drawLineAA(SDL_Surface* surface, int x1, int y1, int x2, int y2, Uint32 color) {
     // (Implementação simplificada — posso detalhar depois)
@@ -117,6 +136,17 @@ void Primitives::drawBezier(SDL_Surface* surface, int x0, int y0, int x1, int y1
         float t = i / (float)STEPS;
         float xt = (1-t)*(1-t)*x0 + 2*(1-t)*t*x1 + t*t*x2;
         float yt = (1-t)*(1-t)*y0 + 2*(1-t)*t*y1 + t*t*y2;
+        setPixel(surface, (int)xt, (int)yt, color);
+    }
+}
+
+// Bézier quadrática
+void Primitives::drawBezier(SDL_Surface* surface, Point ponto0, Point ponto1, Point ponto2, Uint32 color) {
+    const int STEPS = 100;
+    for (int i = 0; i <= STEPS; i++) {
+        float t = i / (float)STEPS;
+        float xt = (1-t)*(1-t)*ponto0.getX() + 2*(1-t)*t*ponto1.getX() + t*t*ponto2.getX();
+        float yt = (1-t)*(1-t)*ponto0.getY() + 2*(1-t)*t*ponto1.getY() + t*t*ponto2.getY();
         setPixel(surface, (int)xt, (int)yt, color);
     }
 }
@@ -243,4 +273,8 @@ Point Primitives::scalePoint(Point point, double sx, double sy, double cx, doubl
     point.setX(xRel + cx);
     point.setY(yRel + cy);
     return point;
+}
+
+double Primitives::scaleLength(double length, double sx, double sy) {
+    return length * (sx + sy) / 2.0;
 }

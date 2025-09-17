@@ -553,7 +553,7 @@
 1756758742 source:c:\users\alexa\onedrive\documentos\linguagemc\sdl_poo\main.cpp
 	"App.h"
 
-1758043790 source:d:\prog\sdl2\tde-sdl2-poo\src\app.cpp
+1758132607 source:d:\prog\sdl2\tde-sdl2-poo\src\app.cpp
 	"App.h"
 	"Circle.h"
 	"CircleFilled.h"
@@ -561,7 +561,7 @@
 	"Casa.h"
 	"World.h"
 
-1758043637 d:\prog\sdl2\tde-sdl2-poo\include\app.h
+1758128447 d:\prog\sdl2\tde-sdl2-poo\include\app.h
 	<SDL2/SDL.h>
 	<string>
 	<vector>
@@ -578,7 +578,7 @@
 	<SDL2/SDL.h>
 	"World.h"
 
-1758055677 d:\prog\sdl2\tde-sdl2-poo\include\primitives.h
+1758130872 d:\prog\sdl2\tde-sdl2-poo\include\primitives.h
 	<string>
 	<vector>
 	<SDL2/SDL.h>
@@ -601,13 +601,13 @@
 	"Shape.h"
 	"Primitives.h"
 
-1758055986 source:d:\prog\sdl2\tde-sdl2-poo\src\primitives.cpp
+1758130859 source:d:\prog\sdl2\tde-sdl2-poo\src\primitives.cpp
 	"Primitives.h"
 	<cmath>
 	<stack>
 	<vector>
 
-1758054140 source:d:\prog\sdl2\tde-sdl2-poo\main.cpp
+1758132146 source:d:\prog\sdl2\tde-sdl2-poo\main.cpp
 	"World.h"
 	"Casa.h"
 	"Arvore.h"
@@ -621,11 +621,11 @@
 	<string>
 	<vector>
 
-1758041826 d:\prog\sdl2\tde-sdl2-poo\include\world.h
+1758131295 d:\prog\sdl2\tde-sdl2-poo\include\world.h
 	"Point.h"
 	<string>
 
-1758056040 d:\prog\sdl2\tde-sdl2-poo\include\casa.h
+1758128562 d:\prog\sdl2\tde-sdl2-poo\include\casa.h
 	<SDL2/SDL.h>
 	"Shape.h"
 	"Primitives.h"
@@ -633,7 +633,7 @@
 	<string>
 	<vector>
 
-1758043229 d:\prog\sdl2\tde-sdl2-poo\include\arvore.h
+1758132742 d:\prog\sdl2\tde-sdl2-poo\include\arvore.h
 	<SDL2/SDL.h>
 	"Shape.h"
 	"Primitives.h"

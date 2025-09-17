@@ -23,7 +23,7 @@ public:
 
     void run(const std::vector<Shape*>& shapes);
     void handleEvents();
-    void clear(Uint8 r, Uint8 g, Uint8 b);
+    void clear(Uint32 color);
     void present();
 
     SDL_Surface* getSurface() { return surface; }

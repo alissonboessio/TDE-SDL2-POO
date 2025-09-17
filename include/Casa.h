@@ -33,10 +33,16 @@ public:
         };
         posicCorPorta = {0.4, 0.2};
 
+        altura = 1;
+        largura = 1;
+        inclinacao = 0;
+
     }
 
     void draw(SDL_Surface* surface, World mundo) override {
         if (!surface) return;
+
+        //std::cout << altura << " - " << largura << " - " << posic.getX() << " - " << posic.getY() << "\n";
 
         // parede
         std::vector<Point> paredeTela;
