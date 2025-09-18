@@ -5,12 +5,14 @@
 #include "Shape.h"
 #include "Primitives.h"
 #include "Point.h"
+#include "HTMLColor.h"
 #include <string>
 #include <vector>
 
 class Casa : public Shape {
 private:
-    int altura, largura, inclinacao;
+    int altura, largura;
+    double inclinacao;
     Point posic, posicCorParede, posicCorTelhado, posicCorPorta;
     std::string corParede, corTelhado, corPorta; // utilizar getColor do Primitives
     std::vector<Point> pontosParede, pontosTeto, pontosPorta;
@@ -42,8 +44,6 @@ public:
     void draw(SDL_Surface* surface, World mundo) override {
         if (!surface) return;
 
-        //std::cout << altura << " - " << largura << " - " << posic.getX() << " - " << posic.getY() << "\n";
-
         // parede
         std::vector<Point> paredeTela;
         paredeTela.reserve(pontosParede.size());
@@ -56,11 +56,13 @@ public:
         for (auto& p : paredeTela)
             p = mundo.worldToScreen(p);
 
-        Primitives::drawPolygon(surface, paredeTela, Primitives::getColor(surface, corParede));
+        HtmlColor hc = HtmlColor();
+
+        Primitives::drawPolygon(surface, paredeTela, hc.getColorUint32(corParede, surface));
 
         Point fillCorParede = Primitives::scalePoint(posicCorParede, largura, altura, 0,0);
         fillCorParede = mundo.worldToScreen(Primitives::translatePoint(fillCorParede, posic.getX(), posic.getY()));
-        Primitives::floodFill(surface, fillCorParede.getX(), fillCorParede.getY(), Primitives::getColor(surface, corParede));
+        Primitives::floodFill(surface, fillCorParede.getX(), fillCorParede.getY(), hc.getColorUint32(corParede, surface));
 
         // teto
         std::vector<Point> tetoTela;
@@ -74,11 +76,11 @@ public:
         for (auto& p : tetoTela)
             p = mundo.worldToScreen(p);
 
-        Primitives::drawPolygon(surface, tetoTela, Primitives::getColor(surface, corTelhado));
+        Primitives::drawPolygon(surface, tetoTela, hc.getColorUint32(corTelhado, surface));
 
         Point fillCorTelhado = Primitives::scalePoint(posicCorTelhado, largura, altura, 0,0);
         fillCorTelhado = mundo.worldToScreen(Primitives::translatePoint(fillCorTelhado, posic.getX(), posic.getY()));
-        Primitives::floodFill(surface, fillCorTelhado.getX(), fillCorTelhado.getY(), Primitives::getColor(surface, corTelhado));
+        Primitives::floodFill(surface, fillCorTelhado.getX(), fillCorTelhado.getY(), hc.getColorUint32(corTelhado, surface));
 
         // porta
         std::vector<Point> portaTela;
@@ -92,11 +94,11 @@ public:
         for (auto& p : portaTela)
             p = mundo.worldToScreen(p);
 
-        Primitives::drawPolygon(surface, portaTela, Primitives::getColor(surface, corPorta));
+        Primitives::drawPolygon(surface, portaTela, hc.getColorUint32(corPorta, surface));
 
         Point fillCorPorta = Primitives::scalePoint(posicCorPorta, largura, altura, 0,0);
         fillCorPorta = mundo.worldToScreen(Primitives::translatePoint(fillCorPorta, posic.getX(), posic.getY()));
-        Primitives::floodFill(surface, fillCorPorta.getX(), fillCorPorta.getY(), Primitives::getColor(surface, corPorta));
+        Primitives::floodFill(surface, fillCorPorta.getX(), fillCorPorta.getY(), hc.getColorUint32(corPorta, surface));
     }
 
     // --- Getters ---
@@ -106,13 +108,13 @@ public:
     std::string getCorParede() const { return corParede; }
     std::string getCorTelhado() const { return corTelhado; }
     std::string getCorPorta() const { return corPorta; }
-    int getInclinacao() const { return inclinacao; }
+    double getInclinacao() const { return inclinacao; }
 
     // --- Setters ---
     void setPosic(Point ponto) { posic = ponto; }
     void setAltura(int valor) { altura = valor; }
     void setLargura(int valor) { largura = valor; }
-    void setInclinacao(int valor) { inclinacao = valor; }
+    void setInclinacao(double valor) { inclinacao = valor; }
     void setCorParede(const std::string& cor) { corParede = cor; }
     void setCorTelhado(const std::string& cor) { corTelhado = cor; }
     void setCorPorta(const std::string& cor) { corPorta = cor; }

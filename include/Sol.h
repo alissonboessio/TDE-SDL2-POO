@@ -17,10 +17,11 @@ private:
 public:
     Sol() {
 
-        raio = 0.5;
+        raio = 0.3;
         posicSol = {0.5, 0.5};
         pontosRaios = {
-            {0, 0.5}, {0.25, 0.5}, {0.5, 1}, {0.5, 0.75}, {0.75, 0.5}, {1, 0.5}, {0.5, 0}, {0.5, 0.25}
+            {0, 0.5}, {0.15, 0.5}, {0.5, 1}, {0.5, 0.85}, {0.85, 0.5}, {1, 0.5}, {0.5, 0}, {0.5, 0.15},
+            {0.1, 0.1}, {0.25, 0.25}, {0.9, 0.9}, {0.75, 0.75}, {0.1, 0.9}, {0.25, 0.75}, {0.9, 0.1}, {0.75, 0.25}
         };
 
         altura = 1;
@@ -31,7 +32,10 @@ public:
     void draw(SDL_Surface* surface, World mundo) override {
         if (!surface) return;
 
-        Uint32 corSol = Primitives::getColor(surface, cor);
+
+        HtmlColor hc = HtmlColor();
+
+        Uint32 corSol = hc.getColorUint32(cor, surface);
 
         Point centroSol = Primitives::scalePoint(posicSol, largura, altura, 0,0);
         centroSol = mundo.worldToScreen(Primitives::translatePoint(centroSol, posic.getX(), posic.getY()));
@@ -57,7 +61,6 @@ public:
             Primitives::drawLine(surface, p1, p2, corSol);
         }
 
-
     }
 
     // --- Getters ---
@@ -65,13 +68,13 @@ public:
     int getAltura() const { return altura; }
     int getLargura() const { return largura; }
     std::string getCor() const { return cor; }
-    int getInclinacao() const { return inclinacao; }
+    double getInclinacao() const { return inclinacao; }
 
     // --- Setters ---
     void setPosic(Point ponto) { posic = ponto; }
     void setAltura(int valor) { altura = valor; }
     void setLargura(int valor) { largura = valor; }
-    void setInclinacao(int valor) { inclinacao = valor; }
+    void setInclinacao(double valor) { inclinacao = valor; }
     void setCor(const std::string& cor) { this->cor = cor; }
 
 };

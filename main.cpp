@@ -138,8 +138,7 @@ Cerca* readCercaInfo(std::ifstream& file, std::string& proximoShape) {
         std::string chave = tokens[0];
 
         if (chave == "Localizacao") {
-            cerca->setX(std::stoi(tokens[1]));
-            cerca->setY(std::stoi(tokens[2]));
+            cerca->setPosic(Point{std::stoi(tokens[1]), std::stoi(tokens[2])});
         } else if (chave == "Altura") {
             cerca->setAltura(std::stoi(tokens[1]));
         } else if (chave == "Largura") {

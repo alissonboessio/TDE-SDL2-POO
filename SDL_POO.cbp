@@ -47,6 +47,7 @@
 		<Unit filename="include/Circle.h" />
 		<Unit filename="include/CircleFilled.h" />
 		<Unit filename="include/CircleFilledAA.h" />
+		<Unit filename="include/HTMLColor.h" />
 		<Unit filename="include/Point.h" />
 		<Unit filename="include/Primitives.h" />
 		<Unit filename="include/Rectangle.h" />

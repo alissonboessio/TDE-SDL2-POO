@@ -38,9 +38,10 @@ void App::run(const std::vector<Shape*>& shapes) {
 
     while (running) {
 
-
         // Limpar fundo
-        clear(Primitives::getColor(surface, getMundo().getCorFundo()));
+
+        HtmlColor hc = HtmlColor();
+        clear(hc.getColorUint32(getMundo().getCorFundo(), surface));
 
         for (auto shape : shapes) {
             shape->draw(surface, getMundo());

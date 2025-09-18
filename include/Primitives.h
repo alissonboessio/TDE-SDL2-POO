@@ -15,9 +15,6 @@ public:
     // Função para pegar a cor de um pixel na superfície
     static Uint32 getPixel(SDL_Surface* surface, int x, int y);
 
-    // Função para converter valores string em Uint32
-    static Uint32 getColor(SDL_Surface* surface, std::string s);
-
     // Função para converter valores RGB em Uint32
     static Uint32 rgbToUint32(SDL_Surface* surface, int r, int g, int b);
 
@@ -55,6 +52,12 @@ public:
     static Point scalePoint(Point point, double sx, double sy, double cx, double cy);
 
     static double scaleLength(double length, double sx, double sy);
+
+    static void rotatePolygon(std::vector<Point>& poly, double angle);
+
+    static void rotatePolygon(std::vector<Point>& poly, double angle, int px, int py);
+
+    static double toRadians(double degrees);
 
 };
 

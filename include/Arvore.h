@@ -8,8 +8,8 @@
 
 class Arvore : public Shape {
 private:
-    int altura, largura, inclinacao;
-    double raioFolhaEsquerda, raioFolhaDireita, raioFolhaCentral;
+    int altura, largura;
+    double raioFolhaEsquerda, raioFolhaDireita, raioFolhaCentral, inclinacao;
     std::string corTronco, corFolhas; // utilizar getColor do Primitives
     Point posic, posicCorTronco, folhaEsquerda, folhaCentral, folhaDireita;
     std::vector<Point> pontosTroncoEsquerdo, pontosTroncoDireito, pontosTroncoFechamento, posicCorFolhas;
@@ -46,8 +46,10 @@ public:
 
         //std::cout << posic.getX() << " - " << posic.getY() << " - " << largura << " - " << altura << " - " << "entrei\n";
 
-        Uint32 corTroncoI = Primitives::getColor(surface,corTronco);
-        Uint32 corFolhasI = Primitives::getColor(surface,corFolhas);
+        HtmlColor hc = HtmlColor();
+
+        Uint32 corTroncoI = hc.getColorUint32(corTronco, surface);
+        Uint32 corFolhasI = hc.getColorUint32(corFolhas, surface);
 
         // tronco esquerdo
         std::vector<Point> troncoTela;
@@ -131,13 +133,13 @@ public:
     int getLargura() const { return largura; }
     std::string getCorTronco() const { return corTronco; }
     std::string getCorFolhas() const { return corFolhas; }
-    int getInclinacao() const { return inclinacao; }
+    double getInclinacao() const { return inclinacao; }
 
     // --- Setters ---
     void setPosic(Point ponto) { posic = ponto; }
     void setAltura(int valor) { altura = valor; }
     void setLargura(int valor) { largura = valor; }
-    void setInclinacao(int valor) { inclinacao = valor; }
+    void setInclinacao(double valor) { inclinacao = valor; }
     void setCorTronco(const std::string& cor) { corTronco = cor; }
     void setCorFolhas(const std::string& cor) { corFolhas = cor; }
 
