@@ -38,7 +38,9 @@ public:
         Uint32 corSol = hc.getColorUint32(cor, surface);
 
         Point centroSol = Primitives::scalePoint(posicSol, largura, altura, 0,0);
-        centroSol = mundo.worldToScreen(Primitives::translatePoint(centroSol, posic.getX(), posic.getY()));
+        centroSol = Primitives::translatePoint(centroSol, posic.getX(), posic.getY());
+        centroSol = Primitives::rotatePoint(centroSol, inclinacao, posic.getX(), posic.getY());
+        centroSol = mundo.worldToScreen(centroSol);
         double raioSol = mundo.worldToScreen(Primitives::scaleLength(raio, largura, altura));
 
         Primitives::drawCircle(surface, centroSol.getX(), centroSol.getY(), raioSol, corSol);
@@ -51,6 +53,7 @@ public:
 
         Primitives::scalePolygon(raiosTela, largura, altura, 0,0);
         Primitives::translatePolygon(raiosTela, posic.getX(), posic.getY());
+        Primitives::rotatePolygon(raiosTela, inclinacao, posic.getX(), posic.getY());
 
         for (auto& p : raiosTela)
             p = mundo.worldToScreen(p);

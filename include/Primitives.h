@@ -59,6 +59,15 @@ public:
 
     static double toRadians(double degrees);
 
+    static Point rotatePoint(Point point, double angle, double cx, double cy);
+
+    static void scanFill(SDL_Surface* surface, const std::vector<Point>& vertices, Uint32 color);
+
+    static std::vector<Point> sampleBezier(const Point& p0, const Point& p1, const Point& p2, int steps = 30);
+
+
+
+
 };
 
 #endif

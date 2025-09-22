@@ -12,14 +12,14 @@ protected:
     double inclinacao;
     std::string cor; // utilizar getColor do Primitives
     std::vector<std::vector<Point>> cercaVertical;
-    std::vector<Point> cercaHorizontal;
+    std::vector<std::vector<Point>> barrasHorizontais; // <-- vários retângulos pequenos
     std::vector<Point> corCercaVerticalPosic;
     std::vector<Point> corCercaHorizontalPosic;
-    Point corPosic, posic;
+    Point posic;
 
 public:
     Cerca() {
-
+        // estacas verticais
         cercaVertical = {
             {{0.1, 0}, {0.3, 0}, {0.3, 0.8}, {0.2, 1}, {0.1, 0.8}},
             {{0.4, 0}, {0.6, 0}, {0.6, 0.8}, {0.5, 1}, {0.4, 0.8}},
@@ -30,15 +30,16 @@ public:
             {0.2, 0.5}, {0.5, 0.5}, {0.8, 0.5}
         };
 
+        // agora, ao invés de 1 retângulo, criamos 3 pequenos entre as estacas
+        barrasHorizontais = {
+            {{0.1, 0.3}, {0.3, 0.3}, {0.3, 0.5}, {0.1, 0.5}}, // entre estaca 1 e 2
+            {{0.4, 0.3}, {0.6, 0.3}, {0.6, 0.5}, {0.4, 0.5}}, // entre estaca 2 e 3
+            {{0.7, 0.3}, {0.9, 0.3}, {0.9, 0.5}, {0.7, 0.5}}  // após estaca 3
+        };
+
         corCercaHorizontalPosic = {
-            {0.35, 0.4}, {0.65, 0.4}
+            {0.2, 0.4}, {0.5, 0.4}, {0.8, 0.4}
         };
-
-        cercaHorizontal = {
-            {0.1, 0.3}, {0.9, 0.3}, {0.9, 0.5}, {0.1, 0.5}
-        };
-
-        corPosic = {0.5, 0.4};
 
         altura = 1;
         largura = 1;
@@ -48,46 +49,52 @@ public:
     void draw(SDL_Surface* surface, World mundo) override {
         if (!surface) return;
 
-        HtmlColor hc = HtmlColor();
+        HtmlColor hc;
         Uint32 corTela = hc.getColorUint32(cor, surface);
 
+        // --- Desenhar estacas verticais ---
         int i = 0;
         for (const auto& poligonoOriginal : cercaVertical) {
             auto poligono = poligonoOriginal;
 
             Primitives::scalePolygon(poligono, largura, altura, 0, 0);
             Primitives::translatePolygon(poligono, posic.getX(), posic.getY());
+            Primitives::rotatePolygon(poligono, inclinacao, posic.getX(), posic.getY());
 
             for (auto& p : poligono)
                 p = mundo.worldToScreen(p);
 
             Primitives::drawPolygon(surface, poligono, corTela);
 
-            Point fillCor = Primitives::scalePoint(corCercaVerticalPosic[i], largura, altura, 0,0);
-            fillCor = mundo.worldToScreen(Primitives::translatePoint(fillCor, posic.getX(), posic.getY()));
+            Point fillCor = Primitives::scalePoint(corCercaVerticalPosic[i], largura, altura, 0, 0);
+            fillCor = Primitives::translatePoint(fillCor, posic.getX(), posic.getY());
+            fillCor = Primitives::rotatePoint(fillCor, inclinacao, posic.getX(), posic.getY());
+            fillCor = mundo.worldToScreen(fillCor);
+
             Primitives::floodFill(surface, fillCor.getX(), fillCor.getY(), corTela, corTela);
             i++;
         }
 
-        //barra horizontal
-        auto horizontalTela = cercaHorizontal;
-        Primitives::scalePolygon(horizontalTela, largura, altura, 0, 0);
-        Primitives::translatePolygon(horizontalTela, posic.getX(), posic.getY());
+        // --- Desenhar barras horizontais separadas ---
+        int j = 0;
+        for (auto barra : barrasHorizontais) {
+            Primitives::scalePolygon(barra, largura, altura, 0, 0);
+            Primitives::translatePolygon(barra, posic.getX(), posic.getY());
+            Primitives::rotatePolygon(barra, inclinacao, posic.getX(), posic.getY());
 
-        for (auto& p : horizontalTela)
-            p = mundo.worldToScreen(p);
+            for (auto& p : barra)
+                p = mundo.worldToScreen(p);
 
-        Primitives::drawPolygon(surface, horizontalTela, corTela);
+            Primitives::drawPolygon(surface, barra, corTela);
 
+            Point fillCor = Primitives::scalePoint(corCercaHorizontalPosic[j], largura, altura, 0, 0);
+            fillCor = Primitives::translatePoint(fillCor, posic.getX(), posic.getY());
+            fillCor = Primitives::rotatePoint(fillCor, inclinacao, posic.getX(), posic.getY());
+            fillCor = mundo.worldToScreen(fillCor);
 
-        for (auto& p : corCercaHorizontalPosic)
-        {
-            Point fillCor = Primitives::scalePoint(p, largura, altura, 0,0);
-            fillCor = mundo.worldToScreen(Primitives::translatePoint(fillCor, posic.getX(), posic.getY()));
             Primitives::floodFill(surface, fillCor.getX(), fillCor.getY(), corTela, corTela);
-
+            j++;
         }
-
     }
 
     // --- Getters ---
@@ -103,7 +110,6 @@ public:
     void setLargura(int valor) { largura = valor; }
     void setInclinacao(double valor) { inclinacao = valor; }
     void setCor(const std::string& cor) { this->cor = cor; }
-
 };
 
 #endif // CERCA_H
