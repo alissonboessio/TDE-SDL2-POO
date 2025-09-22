@@ -11,15 +11,46 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <algorithm>
+#include <cctype>
 
-std::vector<std::string> split(std::string &line, char separador = ';') {
+// Função para remover espaços em branco extras
+std::string trim(const std::string& s) {
+    auto start = s.begin();
+    while (start != s.end() && std::isspace((unsigned char)*start)) {
+        start++;
+    }
+    auto end = s.end();
+    do {
+        end--;
+    } while (std::distance(start, end) > 0 && std::isspace((unsigned char)*end));
+    return std::string(start, end + 1);
+}
+
+// Split robusto
+std::vector<std::string> split(std::string line) {
     std::vector<std::string> tokens;
+
+    // remove BOM se existir
+    if (line.size() >= 3 &&
+        (unsigned char)line[0] == 0xEF &&
+        (unsigned char)line[1] == 0xBB &&
+        (unsigned char)line[2] == 0xBF) {
+        line = line.substr(3);
+    }
+
+    // detecta separador: se tiver ';' usa ';', senão usa ','
+    char separador = ';';
+    if (line.find(';') == std::string::npos && line.find(',') != std::string::npos) {
+        separador = ',';
+    }
+
     std::stringstream ss(line);
     std::string token;
-
     while (std::getline(ss, token, separador)) {
-        tokens.push_back(token);
+        tokens.push_back(trim(token));
     }
+
     return tokens;
 }
 
@@ -29,9 +60,8 @@ World readMundoInfo(std::ifstream& file, std::string& proximoShape) {
 
     while (std::getline(file, line)) {
         if (line.empty()) continue;
-        auto tokens = split(line, ';');
+        auto tokens = split(line);
         if (tokens.size() == 1) {
-
             proximoShape = tokens[0];
             break;
         }
@@ -39,13 +69,13 @@ World readMundoInfo(std::ifstream& file, std::string& proximoShape) {
         std::string chave = tokens[0];
 
         if (chave == "Resolucao") {
-            world.setSRD(std::stoi(tokens[1]),std::stoi(tokens[2]));
+            world.setSRD(std::stod(tokens[1]), std::stod(tokens[2]));
         } else if (chave == "Metros") {
-            world.setSRU(std::stoi(tokens[1]),std::stoi(tokens[2]));
+            world.setSRU(std::stod(tokens[1]), std::stod(tokens[2]));
         } else if (chave == "Cor") {
             world.setCorFundo(tokens[1]);
         } else {
-            std::cerr << "Erro ao ler informações do mundo: " << line << "\n";
+            std::cerr << "Erro ao ler informacoes do mundo: " << line << "\n";
             exit(-1);
         }
     }
@@ -58,7 +88,7 @@ Casa* readCasaInfo(std::ifstream& file, std::string& proximoShape) {
 
     while (std::getline(file, line)) {
         if (line.empty()) continue;
-        auto tokens = split(line, ';');
+        auto tokens = split(line);
         if (tokens.size() == 1) {
             proximoShape = tokens[0];
             break;
@@ -67,11 +97,11 @@ Casa* readCasaInfo(std::ifstream& file, std::string& proximoShape) {
         std::string chave = tokens[0];
 
         if (chave == "Localizacao") {
-            casa->setPosic(Point{std::stoi(tokens[1]), std::stoi(tokens[2])});
+            casa->setPosic(Point{std::stod(tokens[1]), std::stod(tokens[2])});
         } else if (chave == "Altura") {
-            casa->setAltura(std::stoi(tokens[1]));
+            casa->setAltura(std::stod(tokens[1]));
         } else if (chave == "Largura") {
-            casa->setLargura(std::stoi(tokens[1]));
+            casa->setLargura(std::stod(tokens[1]));
         } else if (chave == "CorParede") {
             casa->setCorParede(tokens[1]);
         } else if (chave == "CorTelhado") {
@@ -79,13 +109,12 @@ Casa* readCasaInfo(std::ifstream& file, std::string& proximoShape) {
         } else if (chave == "CorPorta") {
             casa->setCorPorta(tokens[1]);
         } else if (chave == "Inclinacao") {
-            casa->setInclinacao(std::stoi(tokens[1]));
+            casa->setInclinacao(std::stod(tokens[1]));
         } else {
-            std::cout << "\nErro ao ler informações da casa: " << chave;
+            std::cout << "\nErro ao ler informacoes da casa: " << chave;
             exit(-1);
         }
     }
-
     return casa;
 }
 
@@ -95,7 +124,7 @@ Arvore* readArvoreInfo(std::ifstream& file, std::string& proximoShape) {
 
     while (std::getline(file, line)) {
         if (line.empty()) continue;
-        auto tokens = split(line, ';');
+        auto tokens = split(line);
         if (tokens.size() == 1) {
             proximoShape = tokens[0];
             break;
@@ -104,19 +133,19 @@ Arvore* readArvoreInfo(std::ifstream& file, std::string& proximoShape) {
         std::string chave = tokens[0];
 
         if (chave == "Localizacao") {
-            arvore->setPosic(Point{std::stoi(tokens[1]), std::stoi(tokens[2])});
+            arvore->setPosic(Point{std::stod(tokens[1]), std::stod(tokens[2])});
         } else if (chave == "Altura") {
-            arvore->setAltura(std::stoi(tokens[1]));
+            arvore->setAltura(std::stod(tokens[1]));
         } else if (chave == "Largura") {
-            arvore->setLargura(std::stoi(tokens[1]));
+            arvore->setLargura(std::stod(tokens[1]));
         } else if (chave == "CorTronco") {
             arvore->setCorTronco(tokens[1]);
         } else if (chave == "CorFolhas") {
             arvore->setCorFolhas(tokens[1]);
         } else if (chave == "Inclinacao") {
-            arvore->setInclinacao(std::stoi(tokens[1]));
+            arvore->setInclinacao(std::stod(tokens[1]));
         } else {
-            std::cout << "\nErro ao ler informações da arvore: " << chave;
+            std::cout << "\nErro ao ler informacoes da arvore: " << chave;
             exit(-1);
         }
     }
@@ -129,7 +158,7 @@ Cerca* readCercaInfo(std::ifstream& file, std::string& proximoShape) {
 
     while (std::getline(file, line)) {
         if (line.empty()) continue;
-        auto tokens = split(line, ';');
+        auto tokens = split(line);
         if (tokens.size() == 1) {
             proximoShape = tokens[0];
             break;
@@ -138,17 +167,17 @@ Cerca* readCercaInfo(std::ifstream& file, std::string& proximoShape) {
         std::string chave = tokens[0];
 
         if (chave == "Localizacao") {
-            cerca->setPosic(Point{std::stoi(tokens[1]), std::stoi(tokens[2])});
+            cerca->setPosic(Point{std::stod(tokens[1]), std::stod(tokens[2])});
         } else if (chave == "Altura") {
-            cerca->setAltura(std::stoi(tokens[1]));
+            cerca->setAltura(std::stod(tokens[1]));
         } else if (chave == "Largura") {
-            cerca->setLargura(std::stoi(tokens[1]));
+            cerca->setLargura(std::stod(tokens[1]));
         } else if (chave == "Cor") {
             cerca->setCor(tokens[1]);
         } else if (chave == "Inclinacao") {
-            cerca->setInclinacao(std::stoi(tokens[1]));
+            cerca->setInclinacao(std::stod(tokens[1]));
         } else {
-            std::cout << "\nErro ao ler informações da cerca: " << chave;
+            std::cout << "\nErro ao ler informacoes da cerca: " << chave;
             exit(-1);
         }
     }
@@ -161,7 +190,7 @@ Sol* readSolInfo(std::ifstream& file, std::string& proximoShape) {
 
     while (std::getline(file, line)) {
         if (line.empty()) continue;
-        auto tokens = split(line, ';');
+        auto tokens = split(line);
         if (tokens.size() == 1) {
             proximoShape = tokens[0];
             break;
@@ -170,17 +199,17 @@ Sol* readSolInfo(std::ifstream& file, std::string& proximoShape) {
         std::string chave = tokens[0];
 
         if (chave == "Localizacao") {
-            sol->setPosic(Point{std::stoi(tokens[1]), std::stoi(tokens[2])});
+            sol->setPosic(Point{std::stod(tokens[1]), std::stod(tokens[2])});
         } else if (chave == "Altura") {
-            sol->setAltura(std::stoi(tokens[1]));
+            sol->setAltura(std::stod(tokens[1]));
         } else if (chave == "Largura") {
-            sol->setLargura(std::stoi(tokens[1]));
+            sol->setLargura(std::stod(tokens[1]));
         } else if (chave == "Cor") {
             sol->setCor(tokens[1]);
         } else if (chave == "Inclinacao") {
-            sol->setInclinacao(std::stoi(tokens[1]));
+            sol->setInclinacao(std::stod(tokens[1]));
         } else {
-            std::cout << "\nErro ao ler informações do sol: " << chave;
+            std::cout << "\nErro ao ler informacoes do sol: " << chave;
             exit(-1);
         }
     }
@@ -188,8 +217,7 @@ Sol* readSolInfo(std::ifstream& file, std::string& proximoShape) {
 }
 
 int main() {
-
-    std::ifstream file("Exemplo.csv");
+    std::ifstream file("CenarioTeste.csv");
     std::string line;
 
     if (!file.is_open()) {
@@ -207,14 +235,13 @@ int main() {
             if (line.empty()) continue;
         }
 
-        auto tokens = split(line, ';');
+        auto tokens = split(line);
         if (tokens.empty()) {
             proximoShape = "";
             continue;
         }
 
         std::string chave = tokens[0];
-
         if (proximoShape != "") {
             chave = proximoShape;
         }

@@ -2,6 +2,8 @@
 #include <cmath>
 #include <stack>
 #include <vector>
+#include <algorithm> // para std::sort
+
 
 
 void Primitives::setPixel(SDL_Surface* surface, int x, int y, Uint32 color) {
@@ -225,15 +227,15 @@ Point Primitives::translatePoint(Point point, double tx, double ty)
 void Primitives::scalePolygon(std::vector<Point>& poly, double sx, double sy, double cx, double cy)
 {
     for (auto& p : poly) {
-        // Translada para a origem
+        //Translada para a origem
         double xRel = p.getX() - cx;
         double yRel = p.getY() - cy;
 
-        // Aplica escala
+        //Aplica escala
         xRel *= sx;
         yRel *= sy;
 
-        // Translada de volta
+        //Translada de volta
         p.setX(xRel + cx);
         p.setY(yRel + cy);
     }
@@ -282,5 +284,71 @@ void Primitives::rotatePolygon(std::vector<Point>& poly, double angle)
 
 void Primitives::rotatePolygon(std::vector<Point>& poly, double angle, int px, int py)
 {
+
+
+    translatePolygon(poly, -px, -py);
     rotatePolygon(poly, angle);
+    translatePolygon(poly, px, py);
+
 }
+
+Point Primitives::rotatePoint(Point point, double angle, double cx, double cy) {
+    double rad = toRadians(angle);
+    double s = sin(rad);
+    double c = cos(rad);
+
+    //Transladar ponto para origem
+    double x = point.getX() - cx;
+    double y = point.getY() - cy;
+
+    //Aplicar rotação
+    double xnew = x * c - y * s;
+    double ynew = x * s + y * c;
+
+    //Transladar de volta
+    return Point(xnew + cx, ynew + cy);
+}
+
+std::vector<Point> Primitives::sampleBezier(const Point& p0, const Point& p1, const Point& p2, int steps) {
+    std::vector<Point> result;
+    result.reserve(steps+1);
+    for (int i = 0; i <= steps; i++) {
+        double t = (double)i / steps;
+        double x = (1-t)*(1-t)*p0.getX() + 2*(1-t)*t*p1.getX() + t*t*p2.getX();
+        double y = (1-t)*(1-t)*p0.getY() + 2*(1-t)*t*p1.getY() + t*t*p2.getY();
+        result.emplace_back(x, y);
+    }
+    return result;
+}
+
+void Primitives::scanFill(SDL_Surface* surface, const std::vector<Point>& vertices, Uint32 color) {
+    if (vertices.size() < 3) return;
+
+    int h = surface->h;
+
+    for (int y = 0; y < h; y++) {
+        std::vector<int> intersecoes;
+
+        for (size_t i = 0; i < vertices.size(); i++) {
+            Point p1 = vertices[i];
+            Point p2 = vertices[(i + 1) % vertices.size()];
+
+            if (p1.getY() > p2.getY()) std::swap(p1, p2);
+
+            if (y >= p1.getY() && y < p2.getY() && p1.getY() != p2.getY()) {
+                int x = p1.getX() + (double)(y - p1.getY()) * (p2.getX() - p1.getX()) / (p2.getY() - p1.getY());
+                intersecoes.push_back(x);
+            }
+        }
+
+        std::sort(intersecoes.begin(), intersecoes.end());
+
+        for (size_t k = 0; k + 1 < intersecoes.size(); k += 2) {
+            for (int x = intersecoes[k]; x <= intersecoes[k+1]; x++) {
+                setPixel(surface, x, y, color);
+            }
+        }
+    }
+}
+
+
