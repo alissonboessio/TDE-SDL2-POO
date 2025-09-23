@@ -4,6 +4,7 @@
 #include "Arvore.h"
 #include "Cerca.h"
 #include "Sol.h"
+#include "Nuvem.h"
 #include "App.h"
 #include "Point.h"
 #include <iostream>
@@ -225,6 +226,38 @@ Sol* readSolInfo(std::ifstream& file, std::string& proximoShape) {
     return sol;
 }
 
+Nuvem* readNuvemInfo(std::ifstream& file, std::string& proximoShape) {
+    Nuvem* nuvem = new Nuvem();
+    std::string line;
+
+    while (std::getline(file, line)) {
+        if (line.empty()) continue;
+        auto tokens = split(line);
+        if (tokens.size() == 1) {
+            proximoShape = tokens[0];
+            break;
+        }
+
+        std::string chave = tokens[0];
+
+        if (chave == "Localizacao") {
+            nuvem->setPosic(Point{std::stod(tokens[1]), std::stod(tokens[2])});
+        } else if (chave == "Altura") {
+            nuvem->setAltura(std::stod(tokens[1]));
+        } else if (chave == "Largura") {
+            nuvem->setLargura(std::stod(tokens[1]));
+        } else if (chave == "Cor") {
+            nuvem->setCor(tokens[1]);
+        } else if (chave == "Inclinacao") {
+            nuvem->setInclinacao(std::stod(tokens[1]));
+        } else {
+            std::cout << "\nErro ao ler informacoes da nuvem: " << chave;
+            exit(-1);
+        }
+    }
+    return nuvem;
+}
+
 int main() {
     std::ifstream file("Exemplo.csv");
     std::string line;
@@ -274,6 +307,10 @@ int main() {
         if (chave == "Sol") {
             proximoShape = "";
             shapes.push_back(readSolInfo(file, proximoShape));
+        }
+        if (chave == "Nuvem") {
+            proximoShape = "";
+            shapes.push_back(readNuvemInfo(file, proximoShape));
         }
     }
 
