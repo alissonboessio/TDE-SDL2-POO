@@ -110,13 +110,22 @@ Casa* readCasaInfo(std::ifstream& file, std::string& proximoShape) {
             casa->setCorPorta(tokens[1]);
         } else if (chave == "Inclinacao") {
             casa->setInclinacao(std::stod(tokens[1]));
-        } else {
-            std::cout << "\nErro ao ler informacoes da casa: " << chave;
-            exit(-1);
+        }
+        // novos campos opcionais
+        else if (chave == "CorChamine") {
+            casa->setCorChamine(tokens[1]);
+        } else if (chave == "CorFumaca") {
+            casa->setCorFumaca(tokens[1]);
+        }
+        else {
+            std::cout << "\nAviso: chave desconhecida em Casa -> " << chave;
+            // não dá exit(-1), apenas ignora
         }
     }
+
     return casa;
 }
+
 
 Arvore* readArvoreInfo(std::ifstream& file, std::string& proximoShape) {
     Arvore* arvore = new Arvore();
@@ -217,7 +226,7 @@ Sol* readSolInfo(std::ifstream& file, std::string& proximoShape) {
 }
 
 int main() {
-    std::ifstream file("CenarioTeste.csv");
+    std::ifstream file("Exemplo.csv");
     std::string line;
 
     if (!file.is_open()) {

@@ -761,7 +761,7 @@
 	<unordered_map>
 	"Primitives.h"
 
-1758241639 source:c:\users\rique\onedrive\documentos\github\tde-sdl2-poo\main.cpp
+1758664372 source:c:\users\rique\onedrive\documentos\github\tde-sdl2-poo\main.cpp
 	"World.h"
 	"Casa.h"
 	"Arvore.h"
@@ -784,7 +784,7 @@
 1758234269 c:\users\rique\onedrive\documentos\github\tde-sdl2-poo\include\point.h
 	<iostream>
 
-1758236880 c:\users\rique\onedrive\documentos\github\tde-sdl2-poo\include\casa.h
+1758666296 c:\users\rique\onedrive\documentos\github\tde-sdl2-poo\include\casa.h
 	<SDL2/SDL.h>
 	"Shape.h"
 	"Primitives.h"
@@ -859,7 +859,7 @@
 	"Shape.h"
 	"Primitives.h"
 
-1758233891 source:c:\users\rique\onedrive\documentos\github\tde-sdl2-poo\src\primitives.cpp
+1758503804 source:c:\users\rique\onedrive\documentos\github\tde-sdl2-poo\src\primitives.cpp
 	"Primitives.h"
 	<cmath>
 	<stack>
