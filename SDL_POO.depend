@@ -656,7 +656,7 @@
 	"Primitives.h"
 	<string>
 
-1758746281 source:d:\prog\comp-grafica\2d\tde-sdl2-poo\main.cpp
+1758753544 source:d:\prog\comp-grafica\2d\tde-sdl2-poo\main.cpp
 	"World.h"
 	"Casa.h"
 	"Arvore.h"
@@ -677,7 +677,7 @@
 	"Point.h"
 	<string>
 
-1758746281 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\casa.h
+1758753544 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\casa.h
 	"HtmlColor.h"
 	<SDL2/SDL.h>
 	"Shape.h"
@@ -694,7 +694,7 @@
 	<SDL2/SDL.h>
 	"Point.h"
 
-1758746281 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\arvore.h
+1758753544 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\arvore.h
 	<SDL2/SDL.h>
 	"Shape.h"
 	"Primitives.h"
@@ -768,7 +768,7 @@
 	<unordered_map>
 	"Primitives.h"
 
-1758746935 source:c:\users\rique\onedrive\documentos\github\tde-sdl2-poo\main.cpp
+1758669847 source:c:\users\rique\onedrive\documentos\github\tde-sdl2-poo\main.cpp
 	"World.h"
 	"Casa.h"
 	"Arvore.h"
@@ -792,7 +792,7 @@
 1758234269 c:\users\rique\onedrive\documentos\github\tde-sdl2-poo\include\point.h
 	<iostream>
 
-1758746859 c:\users\rique\onedrive\documentos\github\tde-sdl2-poo\include\casa.h
+1758671140 c:\users\rique\onedrive\documentos\github\tde-sdl2-poo\include\casa.h
 	"HtmlColor.h"
 	<SDL2/SDL.h>
 	"Shape.h"
@@ -814,7 +814,7 @@
 	<unordered_map>
 	"Primitives.h"
 
-1758746901 c:\users\rique\onedrive\documentos\github\tde-sdl2-poo\include\arvore.h
+1758503930 c:\users\rique\onedrive\documentos\github\tde-sdl2-poo\include\arvore.h
 	<SDL2/SDL.h>
 	"Shape.h"
 	"Primitives.h"
