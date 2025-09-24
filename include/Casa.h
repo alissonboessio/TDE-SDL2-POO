@@ -17,17 +17,22 @@ protected:
 
 public:
     Casa() {
+        pontosTeto = {{0,0.5}, {1,0.5}, {0.5,0.8}};
+        pontosParede = {{0.1,0}, {0.9,0}, {0.9,0.5}, {0.1,0.5}};
+        pontosPorta = {{0.4,0}, {0.6,0}, {0.6,0.25}, {0.4,0.25}};
+        pontosChamine = {{0.15,0.5}, {0.28,0.5}, {0.28,0.7}, {0.15,0.7}};
+
         altura = 1;
         largura = 1;
         inclinacao = 0;
     }
 
-    // fumaça agora sobe para cima (y positivo)
     std::vector<Point> fumacaRelativa = {
         {0.2, 0.8},
         {0.15, 0.9},
         {0.1, 1.0}
     };
+
 
     void draw(SDL_Surface* surface, World mundo) override {
         if (!surface) return;
@@ -36,7 +41,7 @@ public:
 
         // --- PAREDE ---
         Uint32 corParedeTela = hc.getColorUint32(corParede, surface);
-        std::vector<Point> parede = {{0.1,0}, {0.9,0}, {0.9,0.5}, {0.1,0.5}};
+        std::vector<Point> parede = pontosParede;
         Primitives::scalePolygon(parede, largura, altura, 0, 0);
         Primitives::translatePolygon(parede, posic.getX(), posic.getY());
         Primitives::rotatePolygon(parede, inclinacao, posic.getX(), posic.getY());
@@ -46,7 +51,7 @@ public:
 
         // --- TELHADO ---
         Uint32 corTelhadoTela = hc.getColorUint32(corTelhado, surface);
-        std::vector<Point> telhado = {{0,0.5}, {1,0.5}, {0.5,0.8}};
+        std::vector<Point> telhado = pontosTeto;
         Primitives::scalePolygon(telhado, largura, altura, 0, 0);
         Primitives::translatePolygon(telhado, posic.getX(), posic.getY());
         Primitives::rotatePolygon(telhado, inclinacao, posic.getX(), posic.getY());
@@ -56,7 +61,7 @@ public:
 
         // --- PORTA ---
         Uint32 corPortaTela = hc.getColorUint32(corPorta, surface);
-        std::vector<Point> porta = {{0.4,0}, {0.6,0}, {0.6,0.25}, {0.4,0.25}};
+        std::vector<Point> porta = pontosPorta;
         Primitives::scalePolygon(porta, largura, altura, 0, 0);
         Primitives::translatePolygon(porta, posic.getX(), posic.getY());
         Primitives::rotatePolygon(porta, inclinacao, posic.getX(), posic.getY());
@@ -66,9 +71,7 @@ public:
 
         // --- CHAMINÉ ---
         Uint32 corChamineTela = hc.getColorUint32(corChamine, surface);
-        std::vector<Point> chamine = {
-            {0.15,0.5}, {0.28,0.5}, {0.28,0.7}, {0.15,0.7}
-        };
+        std::vector<Point> chamine = pontosChamine;
         Primitives::scalePolygon(chamine, largura, altura, 0, 0);
         Primitives::translatePolygon(chamine, posic.getX(), posic.getY());
         Primitives::rotatePolygon(chamine, inclinacao, posic.getX(), posic.getY());
@@ -78,7 +81,7 @@ public:
 
         // --- FUMAÇA ---
         Uint32 corFumacaTela = hc.getColorUint32(corFumaca, surface);
-        double raioBaseSRU = 0.07; // fumaça menor e mais realista
+        double raioBaseSRU = 0.07;
 
         for (int i = 0; i < (int)fumacaRelativa.size(); i++) {
             Point centro = Primitives::scalePoint(fumacaRelativa[i], largura, altura, 0, 0);
@@ -86,7 +89,6 @@ public:
             centro = Primitives::rotatePoint(centro, inclinacao, posic.getX(), posic.getY());
             centro = mundo.worldToScreen(centro);
 
-            // raio decresce a cada círculo
             double raioSRU = raioBaseSRU - i * 0.02;
             int raioTela = mundo.worldToScreen(Primitives::scaleLength(raioSRU, largura, altura));
 

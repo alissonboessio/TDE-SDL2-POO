@@ -28,23 +28,10 @@ std::string trim(const std::string& s) {
     return std::string(start, end + 1);
 }
 
-// Split robusto
 std::vector<std::string> split(std::string line) {
     std::vector<std::string> tokens;
 
-    // remove BOM se existir
-    if (line.size() >= 3 &&
-        (unsigned char)line[0] == 0xEF &&
-        (unsigned char)line[1] == 0xBB &&
-        (unsigned char)line[2] == 0xBF) {
-        line = line.substr(3);
-    }
-
-    // detecta separador: se tiver ';' usa ';', senão usa ','
     char separador = ';';
-    if (line.find(';') == std::string::npos && line.find(',') != std::string::npos) {
-        separador = ',';
-    }
 
     std::stringstream ss(line);
     std::string token;
@@ -124,7 +111,6 @@ Casa* readCasaInfo(std::ifstream& file, std::string& proximoShape) {
 
     return casa;
 }
-
 
 Arvore* readArvoreInfo(std::ifstream& file, std::string& proximoShape) {
     Arvore* arvore = new Arvore();
@@ -257,7 +243,7 @@ Nuvem* readNuvemInfo(std::ifstream& file, std::string& proximoShape) {
 }
 
 int main() {
-    std::ifstream file("CenarioTeste.csv");
+    std::ifstream file("Entrega.csv");
     std::string line;
 
     if (!file.is_open()) {
@@ -313,8 +299,6 @@ int main() {
     }
 
     file.close();
-
-    std::cout << shapes.size();
 
     App app("SDL Mundo CSV", world);
     app.run(shapes);

@@ -41,16 +41,12 @@
 		</Compiler>
 		<Unit filename="include/App.h" />
 		<Unit filename="include/Arvore.h" />
-		<Unit filename="include/Button.h" />
 		<Unit filename="include/Casa.h" />
 		<Unit filename="include/Cerca.h" />
-		<Unit filename="include/Circle.h" />
-		<Unit filename="include/CircleFilled.h" />
-		<Unit filename="include/CircleFilledAA.h" />
 		<Unit filename="include/HTMLColor.h" />
+		<Unit filename="include/Nuvem.h" />
 		<Unit filename="include/Point.h" />
 		<Unit filename="include/Primitives.h" />
-		<Unit filename="include/Rectangle.h" />
 		<Unit filename="include/Shape.h" />
 		<Unit filename="include/Sol.h" />
 		<Unit filename="include/World.h" />

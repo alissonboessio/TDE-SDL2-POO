@@ -45,7 +45,6 @@ void App::run(const std::vector<Shape*>& shapes) {
 
         for (auto shape : shapes) {
             shape->draw(surface, getMundo());
-
         }
 
         handleEvents();

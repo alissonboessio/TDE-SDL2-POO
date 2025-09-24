@@ -656,7 +656,7 @@
 	"Primitives.h"
 	<string>
 
-1758753544 source:d:\prog\comp-grafica\2d\tde-sdl2-poo\main.cpp
+1758754986 source:d:\prog\comp-grafica\2d\tde-sdl2-poo\main.cpp
 	"World.h"
 	"Casa.h"
 	"Arvore.h"
@@ -677,7 +677,7 @@
 	"Point.h"
 	<string>
 
-1758753544 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\casa.h
+1758756359 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\casa.h
 	"HtmlColor.h"
 	<SDL2/SDL.h>
 	"Shape.h"
@@ -694,7 +694,7 @@
 	<SDL2/SDL.h>
 	"Point.h"
 
-1758753544 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\arvore.h
+1758756383 d:\prog\comp-grafica\2d\tde-sdl2-poo\include\arvore.h
 	<SDL2/SDL.h>
 	"Shape.h"
 	"Primitives.h"
@@ -720,7 +720,7 @@
 	"World.h"
 	"Shape.h"
 
-1758156081 source:d:\prog\comp-grafica\2d\tde-sdl2-poo\src\app.cpp
+1758754164 source:d:\prog\comp-grafica\2d\tde-sdl2-poo\src\app.cpp
 	"App.h"
 	"Circle.h"
 	"CircleFilled.h"
