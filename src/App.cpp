@@ -52,7 +52,6 @@ void App::run(const std::vector<Shape*>& shapes) {
 
         // Atualizar tela
         present();
-        //std::cin.get();
     }
 }
 
