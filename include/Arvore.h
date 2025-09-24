@@ -16,7 +16,7 @@ private:
 
 public:
     Arvore() {
-        // curvas do tronco em SRU normalizadas (0..1)
+        // curvas do tronco
         pontosTroncoEsquerdo = {
             {0.35, 0}, {0.5, 0.3}, {0.35, 0.6}
         };
@@ -24,7 +24,7 @@ public:
             {0.65, 0}, {0.5, 0.3}, {0.65, 0.6}
         };
 
-        // (retângulo “base” do tronco — ainda útil se quiser fallback)
+        // retângulo “base” do tronco
         pontosTroncoFechamento = {
             {0.35, 0},{0.65, 0}, {0.35, 0.6}, {0.65, 0.6}
         };
@@ -76,14 +76,6 @@ public:
 
         //scanline
         Primitives::scanFill(surface, troncoFechado, corTroncoI);
-
-        //redesenhar contorno para acabamento (curvas + linhas topo/base)
-        Primitives::drawBezier(surface, troncoEsq[0], troncoEsq[1], troncoEsq[2], corTroncoI);
-        Primitives::drawBezier(surface, troncoDir[0], troncoDir[1], troncoDir[2], corTroncoI);
-
-        //linhas de topo e base para ficar bem fechado visualmente
-        Primitives::drawLine(surface, troncoEsq.front(), troncoDir.front(), corTroncoI);   // base
-        Primitives::drawLine(surface, troncoEsq.back(),  troncoDir.back(),  corTroncoI);   // topo
 
         // ===== COPAS (círculos preenchidos) =====
         Point cCentro = Primitives::scalePoint(folhaCentral, largura, altura, 0, 0);

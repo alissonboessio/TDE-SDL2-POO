@@ -22,7 +22,6 @@ public:
         inclinacao = 0;
     }
 
-    // fumaça agora sobe para cima (y positivo)
     std::vector<Point> fumacaRelativa = {
         {0.2, 0.8},
         {0.15, 0.9},
