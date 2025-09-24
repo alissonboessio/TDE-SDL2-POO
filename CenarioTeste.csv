@@ -10,6 +10,8 @@ Inclinacao;10;
 CorParede;yellow;
 CorTelhado;red;
 CorPorta;maroon;
+CorChamine;green;
+CorFumaca;darkgray;
 Casa
 Localizacao;15;2
 Altura;3;
@@ -18,6 +20,8 @@ Inclinacao;-15;
 CorParede;black;
 CorTelhado;orange;
 CorPorta;white;
+CorChamine;yellow;
+CorFumaca;darkgray;
 Arvore
 Localizacao;8;2
 Altura;5;
@@ -77,6 +81,8 @@ Inclinacao;8;
 CorParede;gray;
 CorTelhado;red;
 CorPorta;maroon;
+CorChamine;fuchsia;
+CorFumaca;darkgray;
 Arvore
 Localizacao;32;2
 Altura;5;
@@ -84,12 +90,6 @@ Largura;3;
 Inclinacao;-10;
 CorTronco;maroon;
 CorFolhas;lime;
-Cerca
-Localizacao;5;1
-Altura;2;
-Largura;30;
-Inclinacao;0;
-Cor;green;
 Arvore
 Localizacao;12;2
 Altura;6;

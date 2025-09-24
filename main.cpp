@@ -111,16 +111,14 @@ Casa* readCasaInfo(std::ifstream& file, std::string& proximoShape) {
             casa->setCorPorta(tokens[1]);
         } else if (chave == "Inclinacao") {
             casa->setInclinacao(std::stod(tokens[1]));
-        }
-        // novos campos opcionais
-        else if (chave == "CorChamine") {
+        } else if (chave == "CorChamine") {
             casa->setCorChamine(tokens[1]);
         } else if (chave == "CorFumaca") {
             casa->setCorFumaca(tokens[1]);
         }
         else {
             std::cout << "\nAviso: chave desconhecida em Casa -> " << chave;
-            // não dá exit(-1), apenas ignora
+            exit(-1);
         }
     }
 
@@ -259,7 +257,7 @@ Nuvem* readNuvemInfo(std::ifstream& file, std::string& proximoShape) {
 }
 
 int main() {
-    std::ifstream file("Exemplo.csv");
+    std::ifstream file("CenarioTeste.csv");
     std::string line;
 
     if (!file.is_open()) {
